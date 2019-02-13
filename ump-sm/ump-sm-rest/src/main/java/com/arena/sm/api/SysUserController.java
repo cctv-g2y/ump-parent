@@ -1,4 +1,4 @@
-package com.arena.sm.controller;
+package com.arena.sm.api;
 
 /**
  * @author guofazhan
@@ -6,5 +6,5 @@ package com.arena.sm.controller;
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class SysMenuController {
+public class SysUserController {
 }
