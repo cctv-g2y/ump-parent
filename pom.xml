@@ -9,6 +9,7 @@
         <module>ump-cache</module>
         <module>ump-sm</module>
         <module>ump-fastdfs</module>
+        <module>ump-app</module>
     </modules>
     <!-- 父工程集成springboot 2.0.4 -->
     <parent>
