@@ -17,9 +17,9 @@ public class UmpAuthenticationProvider extends AbstractUserDetailsAuthentication
 	/**
 	 *
 	 */
-	private final CustomUserDetailService userDetailsService;
+	private final UmpUserDetailService userDetailsService;
 
-	public UmpAuthenticationProvider(CustomUserDetailService userDetailsService) {
+	public UmpAuthenticationProvider(UmpUserDetailService userDetailsService) {
 		this.userDetailsService = userDetailsService;
 	}
 

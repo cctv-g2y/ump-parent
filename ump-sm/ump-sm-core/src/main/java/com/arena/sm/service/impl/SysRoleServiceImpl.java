@@ -6,6 +6,8 @@ import com.arena.sm.service.ISysRoleService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author guofazhan
  * @version [版本号, 2019/2/13 0013 0001]
@@ -14,4 +16,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> implements ISysRoleService {
+	@Override
+	public List<SysRole> selectByUserId(String userId) {
+		return baseMapper.selectByUserId(userId);
+	}
 }

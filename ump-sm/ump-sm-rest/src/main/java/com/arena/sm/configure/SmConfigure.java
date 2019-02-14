@@ -1,7 +1,8 @@
 package com.arena.sm.configure;
 
 import com.arena.sm.configure.mybatis.MybatisConfigure;
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import com.arena.sm.configure.security.SecurityConfigure;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -13,6 +14,6 @@ import org.springframework.context.annotation.Configuration;
  * @since [产品/模块版本]
  */
 @Configuration
-@AutoConfigureBefore({ MybatisConfigure.class })
+@AutoConfigureAfter({ SecurityConfigure.class, MybatisConfigure.class })
 public class SmConfigure {
 }

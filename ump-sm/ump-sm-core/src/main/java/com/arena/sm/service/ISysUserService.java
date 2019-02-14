@@ -10,4 +10,12 @@ import com.baomidou.mybatisplus.service.IService;
  * @since [产品/模块版本]
  */
 public interface ISysUserService extends IService<SysUser> {
+
+	/**
+	 * 根据用户名查询用户
+	 *
+	 * @param username
+	 * @return
+	 */
+	SysUser selectUserByUsername(String username);
 }

@@ -12,4 +12,6 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * @since [产品/模块版本]
  */
 public interface SysUserMapper extends BaseMapper<SysUser> {
+
+	SysUser selectUserByUsername(String username);
 }
