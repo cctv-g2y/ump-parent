@@ -1,6 +1,10 @@
 package com.arena.sm.service.impl;
 
+import com.arena.sm.mapper.SysUserRoleMapper;
+import com.arena.sm.model.SysUserRole;
 import com.arena.sm.service.ISysUserRoleService;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
 
 /**
  * @author guofazhan
@@ -8,5 +12,6 @@ import com.arena.sm.service.ISysUserRoleService;
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class SysUserRoleServiceImpl implements ISysUserRoleService {
+@Service
+public class SysUserRoleServiceImpl extends ServiceImpl<SysUserRoleMapper, SysUserRole> implements ISysUserRoleService {
 }

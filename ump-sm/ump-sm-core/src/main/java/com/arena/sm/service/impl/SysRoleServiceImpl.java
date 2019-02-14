@@ -1,6 +1,10 @@
 package com.arena.sm.service.impl;
 
+import com.arena.sm.mapper.SysRoleMapper;
+import com.arena.sm.model.SysRole;
 import com.arena.sm.service.ISysRoleService;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
 
 /**
  * @author guofazhan
@@ -8,5 +12,6 @@ import com.arena.sm.service.ISysRoleService;
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class SysRoleServiceImpl implements ISysRoleService {
+@Service
+public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> implements ISysRoleService {
 }

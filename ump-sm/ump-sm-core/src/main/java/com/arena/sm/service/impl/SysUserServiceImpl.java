@@ -1,6 +1,10 @@
 package com.arena.sm.service.impl;
 
+import com.arena.sm.mapper.SysUserMapper;
+import com.arena.sm.model.SysUser;
 import com.arena.sm.service.ISysUserService;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
 
 /**
  * @author guofazhan
@@ -8,5 +12,6 @@ import com.arena.sm.service.ISysUserService;
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class SysUserServiceImpl implements ISysUserService {
+@Service
+public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements ISysUserService {
 }

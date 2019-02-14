@@ -1,6 +1,10 @@
 package com.arena.sm.service.impl;
 
+import com.arena.sm.mapper.SysDeptMapper;
+import com.arena.sm.model.SysDept;
 import com.arena.sm.service.ISysDeptService;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
 
 /**
  * @author guofazhan
@@ -8,5 +12,6 @@ import com.arena.sm.service.ISysDeptService;
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class SysDeptServiceImpl implements ISysDeptService {
+@Service
+public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDept> implements ISysDeptService {
 }
