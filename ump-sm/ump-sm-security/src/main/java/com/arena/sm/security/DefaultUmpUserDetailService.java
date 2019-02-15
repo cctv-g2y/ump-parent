@@ -25,7 +25,7 @@ import java.util.Set;
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-public class UmpUserDetailService implements UserDetailsService, CustomUserDetailService {
+public class DefaultUmpUserDetailService implements UserDetailsService {
 
 	/**
 	 * 部门服务
@@ -47,26 +47,12 @@ public class UmpUserDetailService implements UserDetailsService, CustomUserDetai
 	 */
 	private final ISysRoleService sysRoleService;
 
-	public UmpUserDetailService(ISysDeptService sysDeptService, ISysUserService sysUserService,
+	public DefaultUmpUserDetailService(ISysDeptService sysDeptService, ISysUserService sysUserService,
 			ISysMenuService sysMenuService, ISysRoleService sysRoleService) {
 		this.sysDeptService = sysDeptService;
 		this.sysUserService = sysUserService;
 		this.sysMenuService = sysMenuService;
 		this.sysRoleService = sysRoleService;
-	}
-
-	@Override
-	public UserDetails loadByUserId(String userId) {
-		SysUser user = null;
-		try {
-			user = sysUserService.selectById(userId);
-		} catch (Exception ex) {
-			// don't care
-		}
-		if (null == user) {
-			throw new UsernameNotFoundException(String.format("user (%s) could not be found", userId));
-		}
-		return createUmpAppUser(user);
 	}
 
 	@Override
@@ -95,7 +81,7 @@ public class UmpUserDetailService implements UserDetailsService, CustomUserDetai
 		List<SysRole> roles = findRoleByUserId(userId);
 		List<SysMenu> menus = findMenuByUserId(userId);
 		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-		return new UmpAppUser(user, false, dept, roles, menus, grantedAuthorities);
+		return new UmpAppUser(user, true, dept, roles, menus, grantedAuthorities);
 	}
 
 	/**

@@ -41,6 +41,11 @@ public class CmmRespCode implements ResultCode {
 	public static final ResultCode COMM_TIMEOUT_ERROR = new CmmRespCode("000005", "系统繁忙，请稍后再试");
 
 	/**
+	 * 权限不足
+	 */
+	public static final ResultCode COMM_AUTH_ERROR = new CmmRespCode("000006", "权限不足！");
+
+	/**
 	 * 返回编码
 	 */
 	private final String code;

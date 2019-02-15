@@ -5,8 +5,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
+ * 认证校验接口实现
  * @author guofazhan
  * @version [版本号, 2019/2/14 0014 0001]
  * @see [相关类/方法]
@@ -17,15 +19,16 @@ public class UmpAuthenticationProvider extends AbstractUserDetailsAuthentication
 	/**
 	 *
 	 */
-	private final UmpUserDetailService userDetailsService;
+	private final UserDetailsService userDetailsService;
 
-	public UmpAuthenticationProvider(UmpUserDetailService userDetailsService) {
+	public UmpAuthenticationProvider(UserDetailsService userDetailsService) {
 		this.userDetailsService = userDetailsService;
 	}
 
 	@Override
 	protected void additionalAuthenticationChecks(UserDetails userDetails,
 			UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
+		System.out.println("===================================");
 		throw new BadCredentialsException("Authentication failed for this username and password");
 	}
 

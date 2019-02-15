@@ -1,19 +1,25 @@
 package com.arena.sm.configure.security;
 
+import com.arena.sm.security.CacheUmpUserDetailService;
+import com.arena.sm.security.DefaultUmpUserDetailService;
 import com.arena.sm.security.UmpAuthenticationProvider;
-import com.arena.sm.security.UmpUserDetailService;
+import com.arena.sm.security.cache.UmpAppUserCacheProperties;
 import com.arena.sm.service.ISysDeptService;
 import com.arena.sm.service.ISysMenuService;
 import com.arena.sm.service.ISysRoleService;
 import com.arena.sm.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  * 安全相关的配置信息
@@ -51,8 +57,17 @@ public class SecurityConfigure {
 	private ISysRoleService sysRoleService;
 
 	@Bean
-	public UmpUserDetailService userDetailsService() {
-		return new UmpUserDetailService(sysDeptService, sysUserService, sysMenuService, sysRoleService);
+	@Primary
+	@ConfigurationProperties("ump.user.cache")
+	public UmpAppUserCacheProperties cacheProperties() {
+		return new UmpAppUserCacheProperties();
+	}
+
+	@Bean
+	public UserDetailsService userDetailsService() {
+		return new CacheUmpUserDetailService(
+				new DefaultUmpUserDetailService(sysDeptService, sysUserService, sysMenuService, sysRoleService),
+				cacheProperties());
 	}
 
 	@Bean
@@ -60,12 +75,30 @@ public class SecurityConfigure {
 		return new UmpAuthenticationProvider(userDetailsService());
 	}
 
-	@Configuration
 	@Order(1)
+	@Configuration
+	@EnableWebSecurity
 	public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
+
+		@Autowired
+		private AuthenticationProvider authenticationProvider;
+
+		@Autowired
+		private UserDetailsService userDetailsService;
+
+		@Override
+		protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+			auth.authenticationProvider(authenticationProvider).userDetailsService(userDetailsService);
+		}
+
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
-			http.antMatcher("/rest/**").authorizeRequests().antMatchers("/rest/**").authenticated().and().httpBasic();
+			http.authorizeRequests().antMatchers("/rest/user/find/**").permitAll().and().antMatcher("/rest/**")
+					.authorizeRequests().antMatchers("/rest/**").authenticated();
+			http.httpBasic();
+//			//设置认证异常处理器
+//			http.exceptionHandling().authenticationEntryPoint(new RestAuthenticationEntryPoint())
+//					.accessDeniedHandler(new RestAccessDeineHandler());
 		}
 	}
 }

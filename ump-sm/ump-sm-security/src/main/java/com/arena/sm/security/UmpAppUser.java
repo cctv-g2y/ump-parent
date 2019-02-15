@@ -45,8 +45,8 @@ public class UmpAppUser extends User implements UmpUserDetails {
 				authorities);
 		this.user = user;
 		this.dept = dept;
-		this.roles = Collections.unmodifiableList(roles);
-		this.menus = Collections.unmodifiableList(menus);
+		this.roles = null != roles ? Collections.unmodifiableList(roles) : Collections.EMPTY_LIST;
+		this.menus = null != menus ? Collections.unmodifiableList(menus) : Collections.EMPTY_LIST;
 	}
 
 	@Override
