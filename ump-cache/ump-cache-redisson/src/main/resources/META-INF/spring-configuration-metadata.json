@@ -1,0 +1,580 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "name": "ump.cache.redisson.cluster",
+      "type": "com.arena.cache.redisson.config.ClusterProperties"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "name": "ump.cache.redisson.sentinel",
+      "type": "com.arena.cache.redisson.config.SentinelProperties"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "name": "ump.cache.redisson.single",
+      "type": "com.arena.cache.redisson.config.SingleProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "name": "ump.cache.redisson.cluster.client-name",
+      "description": "clientName（客户端名称） 默认值：null",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": "org.redisson.client.codec.StringCodec",
+      "name": "ump.cache.redisson.cluster.codec",
+      "description": "codec（编码） 默认值: org.redisson.codec.JsonJacksonCodec Redisson的对象编码类是用于将对象进行序列化和反序列化，以实现对该对象在Redis里的读取和存储。Redisson提供了以下几种的对象编码应用，以供大家选择",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 10000,
+      "name": "ump.cache.redisson.cluster.connect-timeout",
+      "description": "connectTimeout（连接超时，单位：毫秒） 默认值：10000 同任何节点建立连接时的等待超时。时间单位是毫秒",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 0,
+      "name": "ump.cache.redisson.cluster.dns-monitoring-interval",
+      "description": "dnsMonitoringInterval（DNS监控间隔，单位：毫秒） 默认值：5000 用来指定检查节点DNS变化的时间间隔。使用的时候应该确保JVM里的DNS数据的缓存时间保持在足够低的范围才有意义。用-1来禁用该功能。",
+      "type": "java.lang.Long"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 3,
+      "name": "ump.cache.redisson.cluster.failed-attempts",
+      "description": "failedAttempts（执行失败最大次数） 默认值：3 在某个节点执行相同或不同命令时，连续 失败 failedAttempts（执行失败最大次数） 时，该节点将被从可用节点列表里清除，直到 reconnectionTimeout（重新连接时间间隔） 超时以后再次尝试",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 10000,
+      "name": "ump.cache.redisson.cluster.idle-connection-timeout",
+      "description": "idleConnectionTimeout（连接空闲超时，单位：毫秒） 默认值：10000 如果当前连接池里的连接数量超过了最小空闲连接数，而同时有连接空闲时间超过了该数值，那么这些连接将会自动被关闭，并从连接池里去掉。时间单位是毫秒。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": true,
+      "name": "ump.cache.redisson.cluster.keep-pub-sub-order",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 30000,
+      "name": "ump.cache.redisson.cluster.lock-watchdog-timeout",
+      "type": "java.lang.Long"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 10,
+      "name": "ump.cache.redisson.cluster.master-connection-minimum-idle-size",
+      "description": "masterConnectionMinimumIdleSize（主节点最小空闲连接数） 默认值：32 多从节点的环境里，每个 主节点的最小保持连接数（长连接）。长期保持一定数量的连接有利于提高瞬时写入反应速度。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 64,
+      "name": "ump.cache.redisson.cluster.master-connection-pool-size",
+      "description": "masterConnectionPoolSize（主节点连接池大小） 默认值：64 主节点的连接池最大容量。连接池的连接数量自动弹性伸缩。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 0,
+      "name": "ump.cache.redisson.cluster.netty-threads",
+      "description": "nettyThreads （Netty线程池数量） 默认值: 当前处理核数量 * 2 这个线程池数量是在一个Redisson实例内，被其创建的所有分布式数据类型和服务，以及底层客户端所一同共享的线程池里保存的线程数量。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "name": "ump.cache.redisson.cluster.node-addresses",
+      "description": "节点地址",
+      "type": "java.util.List<java.lang.String>"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "name": "ump.cache.redisson.cluster.password",
+      "description": "用于节点身份验证的密码 默认值：null",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 1000,
+      "name": "ump.cache.redisson.cluster.ping-timeout",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "name": "ump.cache.redisson.cluster.read-mode",
+      "description": "readMode（读取操作的负载均衡模式） <p> 默认值： SLAVE（只在从服务节点里读取） 注：在从服务节点里读取的数据说明已经至少有两个节点保存了该数据，确保了数据的高可用性。 设置读取操作选择节点的模式。 可用值为： SLAVE - 只在从服务节点里读取。 MASTER - 只在主服务节点里读取。 MASTER_SLAVE - 在主从服务节点里都可以读取",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 3000,
+      "name": "ump.cache.redisson.cluster.reconnection-timeout",
+      "description": "reconnectionTimeout（重新连接时间间隔，单位：毫秒） 默认值：3000 当与某个节点的连接断开时，等待与其重新建立连接的时间间隔。时间单位是毫秒",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": true,
+      "name": "ump.cache.redisson.cluster.reference-enabled",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 3,
+      "name": "ump.cache.redisson.cluster.retry-attempts",
+      "description": "retryAttempts（命令失败重试次数） 默认值：3 如果尝试达到 retryAttempts（命令失败重试次数） 仍然不能将命令发送至某个指定的节点时，将抛出错误。如果尝试在此限制之内发送成功，则开始启用 timeout（命令等待超时） 计时。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 1500,
+      "name": "ump.cache.redisson.cluster.retry-interval",
+      "description": "retryInterval（命令重试发送时间间隔，单位：毫秒） 默认值：1500 在一条命令发送失败以后，等待重试发送的时间间隔。时间单位是毫秒。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 1000,
+      "name": "ump.cache.redisson.cluster.scan-interval",
+      "description": "scanInterval（主节点变化扫描间隔时间） 默认值： 1000 对主节点变化节点状态扫描的时间间隔。单位是毫秒。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 10,
+      "name": "ump.cache.redisson.cluster.slave-connection-minimum-idle-size",
+      "description": "slaveConnectionMinimumIdleSize（从节点最小空闲连接数） 默认值：32 多从节点的环境里，每个 从服务节点里用于普通操作（非 发布和订阅）的最小保持连接数（长连接）。长期保持一定数量的连接有利于提高瞬时读取反映速度。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 64,
+      "name": "ump.cache.redisson.cluster.slave-connection-pool-size",
+      "description": "slaveConnectionPoolSize（从节点连接池大小） 默认值：64 多从节点的环境里，每个 从服务节点里用于普通操作（非 发布和订阅）连接的连接池最大容量。连接池的连接数量自动弹性伸缩",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 0,
+      "name": "ump.cache.redisson.cluster.subscription-connection-minimum-idle-size",
+      "description": "subscriptionConnectionMinimumIdleSize（从节点发布和订阅连接的最小空闲连接数） 默认值：1 多从节点的环境里，每个 从服务节点里用于发布和订阅连接的最小保持连接数（长连接）。Redisson内部经常通过发布和订阅来实现许多功能。长期保持一定数量的发布订阅连接是必须的。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 0,
+      "name": "ump.cache.redisson.cluster.subscription-connection-pool-size",
+      "description": "subscriptionConnectionPoolSize（从节点发布和订阅连接池大小） 默认值：50 多从节点的环境里，每个 从服务节点里用于发布和订阅连接的连接池最大容量。连接池的连接数量自动弹性伸缩。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "name": "ump.cache.redisson.cluster.subscription-mode",
+      "description": "subscriptionMode（订阅操作的负载均衡模式） 默认值：SLAVE（只在从服务节点里订阅） 设置订阅操作选择节点的模式。 可用值为： SLAVE - 只在从服务节点里订阅。 MASTER - 只在主服务节点里订阅。",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 5,
+      "name": "ump.cache.redisson.cluster.subscriptions-per-connection",
+      "description": "subscriptionsPerConnection（单个连接最大订阅数量） 默认值：5 每个连接的最大订阅数量",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 0,
+      "name": "ump.cache.redisson.cluster.threads",
+      "description": "threads（线程池数量） 默认值: 当前处理核数量 * 2 这个线程池数量被所有RTopic对象监听器，RRemoteService调用者和RExecutorService任务共同共享。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": 3000,
+      "name": "ump.cache.redisson.cluster.timeout",
+      "description": "timeout（命令等待超时，单位：毫秒） 默认值：3000 等待节点回复命令的时间。该时间从命令发送成功时开始计时",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.ClusterProperties",
+      "defaultValue": false,
+      "name": "ump.cache.redisson.cluster.use-linux-native-epoll",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "name": "ump.cache.redisson.sentinel.client-name",
+      "description": "clientName（客户端名称） 默认值：null",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": "org.redisson.client.codec.StringCodec",
+      "name": "ump.cache.redisson.sentinel.codec",
+      "description": "codec（编码） 默认值: org.redisson.codec.JsonJacksonCodec Redisson的对象编码类是用于将对象进行序列化和反序列化，以实现对该对象在Redis里的读取和存储。Redisson提供了以下几种的对象编码应用，以供大家选择",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 10000,
+      "name": "ump.cache.redisson.sentinel.connect-timeout",
+      "description": "connectTimeout（连接超时，单位：毫秒） 默认值：10000 同任何节点建立连接时的等待超时。时间单位是毫秒",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 0,
+      "name": "ump.cache.redisson.sentinel.database",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 0,
+      "name": "ump.cache.redisson.sentinel.dns-monitoring-interval",
+      "description": "dnsMonitoringInterval（DNS监控间隔，单位：毫秒） 默认值：5000 用来指定检查节点DNS变化的时间间隔。使用的时候应该确保JVM里的DNS数据的缓存时间保持在足够低的范围才有意义。用-1来禁用该功能。",
+      "type": "java.lang.Long"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 3,
+      "name": "ump.cache.redisson.sentinel.failed-attempts",
+      "description": "failedAttempts（执行失败最大次数） 默认值：3 在某个节点执行相同或不同命令时，连续 失败 failedAttempts（执行失败最大次数） 时，该节点将被从可用节点列表里清除，直到 reconnectionTimeout（重新连接时间间隔） 超时以后再次尝试",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 10000,
+      "name": "ump.cache.redisson.sentinel.idle-connection-timeout",
+      "description": "idleConnectionTimeout（连接空闲超时，单位：毫秒） 默认值：10000 如果当前连接池里的连接数量超过了最小空闲连接数，而同时有连接空闲时间超过了该数值，那么这些连接将会自动被关闭，并从连接池里去掉。时间单位是毫秒。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": true,
+      "name": "ump.cache.redisson.sentinel.keep-pub-sub-order",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 30000,
+      "name": "ump.cache.redisson.sentinel.lock-watchdog-timeout",
+      "type": "java.lang.Long"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 10,
+      "name": "ump.cache.redisson.sentinel.master-connection-minimum-idle-size",
+      "description": "masterConnectionMinimumIdleSize（主节点最小空闲连接数） 默认值：32 多从节点的环境里，每个 主节点的最小保持连接数（长连接）。长期保持一定数量的连接有利于提高瞬时写入反应速度。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 64,
+      "name": "ump.cache.redisson.sentinel.master-connection-pool-size",
+      "description": "masterConnectionPoolSize（主节点连接池大小） 默认值：64 主节点的连接池最大容量。连接池的连接数量自动弹性伸缩。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "name": "ump.cache.redisson.sentinel.master-name",
+      "description": "masterName（主服务器的名称） 主服务器的名称是哨兵进程中用来监测主从服务切换情况的。",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 0,
+      "name": "ump.cache.redisson.sentinel.netty-threads",
+      "description": "nettyThreads （Netty线程池数量） 默认值: 当前处理核数量 * 2 这个线程池数量是在一个Redisson实例内，被其创建的所有分布式数据类型和服务，以及底层客户端所一同共享的线程池里保存的线程数量。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "name": "ump.cache.redisson.sentinel.node-addresses",
+      "description": "节点地址",
+      "type": "java.util.List<java.lang.String>"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "name": "ump.cache.redisson.sentinel.password",
+      "description": "用于节点身份验证的密码 默认值：null",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 1000,
+      "name": "ump.cache.redisson.sentinel.ping-timeout",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "name": "ump.cache.redisson.sentinel.read-mode",
+      "description": "readMode（读取操作的负载均衡模式） <p> 默认值： SLAVE（只在从服务节点里读取） 注：在从服务节点里读取的数据说明已经至少有两个节点保存了该数据，确保了数据的高可用性。 设置读取操作选择节点的模式。 可用值为： SLAVE - 只在从服务节点里读取。 MASTER - 只在主服务节点里读取。 MASTER_SLAVE - 在主从服务节点里都可以读取",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 3000,
+      "name": "ump.cache.redisson.sentinel.reconnection-timeout",
+      "description": "reconnectionTimeout（重新连接时间间隔，单位：毫秒） 默认值：3000 当与某个节点的连接断开时，等待与其重新建立连接的时间间隔。时间单位是毫秒",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": true,
+      "name": "ump.cache.redisson.sentinel.reference-enabled",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 3,
+      "name": "ump.cache.redisson.sentinel.retry-attempts",
+      "description": "retryAttempts（命令失败重试次数） 默认值：3 如果尝试达到 retryAttempts（命令失败重试次数） 仍然不能将命令发送至某个指定的节点时，将抛出错误。如果尝试在此限制之内发送成功，则开始启用 timeout（命令等待超时） 计时。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 1500,
+      "name": "ump.cache.redisson.sentinel.retry-interval",
+      "description": "retryInterval（命令重试发送时间间隔，单位：毫秒） 默认值：1500 在一条命令发送失败以后，等待重试发送的时间间隔。时间单位是毫秒。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 10,
+      "name": "ump.cache.redisson.sentinel.slave-connection-minimum-idle-size",
+      "description": "slaveConnectionMinimumIdleSize（从节点最小空闲连接数） 默认值：32 多从节点的环境里，每个 从服务节点里用于普通操作（非 发布和订阅）的最小保持连接数（长连接）。长期保持一定数量的连接有利于提高瞬时读取反映速度。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 64,
+      "name": "ump.cache.redisson.sentinel.slave-connection-pool-size",
+      "description": "slaveConnectionPoolSize（从节点连接池大小） 默认值：64 多从节点的环境里，每个 从服务节点里用于普通操作（非 发布和订阅）连接的连接池最大容量。连接池的连接数量自动弹性伸缩",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 0,
+      "name": "ump.cache.redisson.sentinel.subscription-connection-minimum-idle-size",
+      "description": "subscriptionConnectionMinimumIdleSize（从节点发布和订阅连接的最小空闲连接数） 默认值：1 多从节点的环境里，每个 从服务节点里用于发布和订阅连接的最小保持连接数（长连接）。Redisson内部经常通过发布和订阅来实现许多功能。长期保持一定数量的发布订阅连接是必须的。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 0,
+      "name": "ump.cache.redisson.sentinel.subscription-connection-pool-size",
+      "description": "subscriptionConnectionPoolSize（从节点发布和订阅连接池大小） 默认值：50 多从节点的环境里，每个 从服务节点里用于发布和订阅连接的连接池最大容量。连接池的连接数量自动弹性伸缩。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "name": "ump.cache.redisson.sentinel.subscription-mode",
+      "description": "subscriptionMode（订阅操作的负载均衡模式） 默认值：SLAVE（只在从服务节点里订阅） 设置订阅操作选择节点的模式。 可用值为： SLAVE - 只在从服务节点里订阅。 MASTER - 只在主服务节点里订阅。",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 5,
+      "name": "ump.cache.redisson.sentinel.subscriptions-per-connection",
+      "description": "subscriptionsPerConnection（单个连接最大订阅数量） 默认值：5 每个连接的最大订阅数量",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 0,
+      "name": "ump.cache.redisson.sentinel.threads",
+      "description": "threads（线程池数量） 默认值: 当前处理核数量 * 2 这个线程池数量被所有RTopic对象监听器，RRemoteService调用者和RExecutorService任务共同共享。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": 3000,
+      "name": "ump.cache.redisson.sentinel.timeout",
+      "description": "timeout（命令等待超时，单位：毫秒） 默认值：3000 等待节点回复命令的时间。该时间从命令发送成功时开始计时",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SentinelProperties",
+      "defaultValue": false,
+      "name": "ump.cache.redisson.sentinel.use-linux-native-epoll",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "name": "ump.cache.redisson.single.address",
+      "description": "地址",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "name": "ump.cache.redisson.single.client-name",
+      "description": "clientName（客户端名称） 默认值：null",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": "org.redisson.client.codec.StringCodec",
+      "name": "ump.cache.redisson.single.codec",
+      "description": "codec（编码） 默认值: org.redisson.codec.JsonJacksonCodec Redisson的对象编码类是用于将对象进行序列化和反序列化，以实现对该对象在Redis里的读取和存储。Redisson提供了以下几种的对象编码应用，以供大家选择",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 10000,
+      "name": "ump.cache.redisson.single.connect-timeout",
+      "description": "connectTimeout（连接超时，单位：毫秒） 默认值：10000 同任何节点建立连接时的等待超时。时间单位是毫秒",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 10,
+      "name": "ump.cache.redisson.single.connection-minimum-idle-size",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 64,
+      "name": "ump.cache.redisson.single.connection-pool-size",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 0,
+      "name": "ump.cache.redisson.single.database",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": true,
+      "name": "ump.cache.redisson.single.dns-monitoring",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 5000,
+      "name": "ump.cache.redisson.single.dns-monitoring-interval",
+      "type": "java.lang.Long"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 3,
+      "name": "ump.cache.redisson.single.failed-attempts",
+      "description": "failedAttempts（执行失败最大次数） 默认值：3 在某个节点执行相同或不同命令时，连续 失败 failedAttempts（执行失败最大次数） 时，该节点将被从可用节点列表里清除，直到 reconnectionTimeout（重新连接时间间隔） 超时以后再次尝试",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 10000,
+      "name": "ump.cache.redisson.single.idle-connection-timeout",
+      "description": "idleConnectionTimeout（连接空闲超时，单位：毫秒） 默认值：10000 如果当前连接池里的连接数量超过了最小空闲连接数，而同时有连接空闲时间超过了该数值，那么这些连接将会自动被关闭，并从连接池里去掉。时间单位是毫秒。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": true,
+      "name": "ump.cache.redisson.single.keep-pub-sub-order",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 30000,
+      "name": "ump.cache.redisson.single.lock-watchdog-timeout",
+      "type": "java.lang.Long"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 0,
+      "name": "ump.cache.redisson.single.netty-threads",
+      "description": "nettyThreads （Netty线程池数量） 默认值: 当前处理核数量 * 2 这个线程池数量是在一个Redisson实例内，被其创建的所有分布式数据类型和服务，以及底层客户端所一同共享的线程池里保存的线程数量。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "name": "ump.cache.redisson.single.password",
+      "description": "用于节点身份验证的密码 默认值：null",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 1000,
+      "name": "ump.cache.redisson.single.ping-timeout",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 3000,
+      "name": "ump.cache.redisson.single.reconnection-timeout",
+      "description": "reconnectionTimeout（重新连接时间间隔，单位：毫秒） 默认值：3000 当与某个节点的连接断开时，等待与其重新建立连接的时间间隔。时间单位是毫秒",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": true,
+      "name": "ump.cache.redisson.single.reference-enabled",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 3,
+      "name": "ump.cache.redisson.single.retry-attempts",
+      "description": "retryAttempts（命令失败重试次数） 默认值：3 如果尝试达到 retryAttempts（命令失败重试次数） 仍然不能将命令发送至某个指定的节点时，将抛出错误。如果尝试在此限制之内发送成功，则开始启用 timeout（命令等待超时） 计时。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 1500,
+      "name": "ump.cache.redisson.single.retry-interval",
+      "description": "retryInterval（命令重试发送时间间隔，单位：毫秒） 默认值：1500 在一条命令发送失败以后，等待重试发送的时间间隔。时间单位是毫秒。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 1,
+      "name": "ump.cache.redisson.single.subscription-connection-minimum-idle-size",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 50,
+      "name": "ump.cache.redisson.single.subscription-connection-pool-size",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 5,
+      "name": "ump.cache.redisson.single.subscriptions-per-connection",
+      "description": "subscriptionsPerConnection（单个连接最大订阅数量） 默认值：5 每个连接的最大订阅数量",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 0,
+      "name": "ump.cache.redisson.single.threads",
+      "description": "threads（线程池数量） 默认值: 当前处理核数量 * 2 这个线程池数量被所有RTopic对象监听器，RRemoteService调用者和RExecutorService任务共同共享。",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": 3000,
+      "name": "ump.cache.redisson.single.timeout",
+      "description": "timeout（命令等待超时，单位：毫秒） 默认值：3000 等待节点回复命令的时间。该时间从命令发送成功时开始计时",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.arena.cache.redisson.config.SingleProperties",
+      "defaultValue": false,
+      "name": "ump.cache.redisson.single.use-linux-native-epoll",
+      "type": "java.lang.Boolean"
+    }
+  ]
+}

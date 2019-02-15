@@ -4,7 +4,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>ump-parent</artifactId>
+        <artifactId>ump-cache</artifactId>
         <groupId>com.arena</groupId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
@@ -12,17 +12,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.arena</groupId>
-    <artifactId>ump-cache</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>ump-cache-base</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>ump-cache-base</module>
-        <module>ump-cache-redisson</module>
-    </modules>
+    <packaging>jar</packaging>
 
-    <name>ump-cache</name>
+    <name>ump-cache-base</name>
     <url>http://www.arena.com</url>
-    <description>（统一管理平台）缓存模块</description>
+    <description>（统一管理平台）缓存基础模块</description>
     <developers>
         <developer>
             <name>guofazhan</name>
@@ -35,23 +31,18 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.arena</groupId>
-                <artifactId>ump-cache-base</artifactId>
-                <version>1.0-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.arena</groupId>
-                <artifactId>ump-cache-redisson</artifactId>
-                <version>1.0-SNAPSHOT</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
     </dependencies>
 
-    <build></build>
+    <build>
+    </build>
 </project>

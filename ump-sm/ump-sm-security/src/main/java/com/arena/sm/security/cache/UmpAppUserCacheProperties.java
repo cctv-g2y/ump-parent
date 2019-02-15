@@ -1,11 +1,14 @@
 package com.arena.sm.security.cache;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
 /**
  * @author guofazhan
  * @version [版本号, 2019/2/15 0015 0001]
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
+@ConfigurationProperties(prefix = "ump.sm.security.user.cache")
 public class UmpAppUserCacheProperties {
 
 	/**
@@ -16,8 +19,11 @@ public class UmpAppUserCacheProperties {
 	/**
 	 * The max age in seconds after which the entry should be invalidated.
 	 */
-	private long maxAge =  3600L;
+	private long maxAge = 3600L;
 
+	/**
+	 * 最大失效时间刷新缓存
+	 */
 	protected long userValidityPeriod = 3600000L;
 
 	public long getMaxSize() {

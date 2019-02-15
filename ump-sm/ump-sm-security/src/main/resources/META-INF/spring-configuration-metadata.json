@@ -1,0 +1,33 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.arena.sm.security.cache.UmpAppUserCacheProperties",
+      "name": "ump.sm.security.user.cache",
+      "type": "com.arena.sm.security.cache.UmpAppUserCacheProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.arena.sm.security.cache.UmpAppUserCacheProperties",
+      "defaultValue": 3600,
+      "name": "ump.sm.security.user.cache.max-age",
+      "description": "The max age in seconds after which the entry should be invalidated.",
+      "type": "java.lang.Long"
+    },
+    {
+      "sourceType": "com.arena.sm.security.cache.UmpAppUserCacheProperties",
+      "defaultValue": 2048,
+      "name": "ump.sm.security.user.cache.max-size",
+      "description": "The maximum number of entries that the cache should contain.",
+      "type": "java.lang.Long"
+    },
+    {
+      "sourceType": "com.arena.sm.security.cache.UmpAppUserCacheProperties",
+      "defaultValue": 3600000,
+      "name": "ump.sm.security.user.cache.user-validity-period",
+      "description": "最大失效时间刷新缓存",
+      "type": "java.lang.Long"
+    }
+  ]
+}
