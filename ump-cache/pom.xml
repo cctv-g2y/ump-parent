@@ -40,12 +40,12 @@
             <dependency>
                 <groupId>com.arena</groupId>
                 <artifactId>ump-cache-base</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.build.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.arena</groupId>
                 <artifactId>ump-cache-redisson</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.build.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

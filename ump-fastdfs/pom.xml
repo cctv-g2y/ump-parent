@@ -34,12 +34,15 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.arena</groupId>
+                <artifactId>ump-fastdfs-base</artifactId>
+                <version>${project.build.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <build></build>
 </project>
