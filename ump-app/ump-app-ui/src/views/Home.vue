@@ -1,15 +1,15 @@
 <template>
     <ump-layout>
-        <template #north>
+        <template #header>
             Here might be a page title
         </template>
-        <template #west>
+        <template #side>
             Here might be a page title
         </template>
-        <template #center>
+        <template #main>
             Here might be a page title
         </template>
-        <template #east>
+        <template #bottom>
             Here might be a page title
         </template>
     </ump-layout>

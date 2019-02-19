@@ -1,19 +1,22 @@
 <template>
-    <section class="ump-layout">
-        <section v-if="$slots.north" class="ump-layout__north" ref="north">
-            <slot name="north"></slot>
+    <section class="ump-df-layout" flex="dir:top">
+        <section v-if="$slots.header" flex-box="0" class="ump-df-layout__header"
+                 ref="header">
+            <slot name="header"></slot>
         </section>
-        <section v-if="$slots.west" class="ump-layout__west" ref="west">
-            <slot name="west"></slot>
+        <section flex-box="1" flex="dir:left" class="ump-df-layout__center">
+            <section v-if="$slots.side" flex-box="0" class="ump-df-layout__side"
+                     ref="side">
+                <slot name="side"></slot>
+            </section>
+            <section v-if="$slots.main" flex-box="1" class="ump-df-layout__main"
+                     ref="main">
+                <slot name="main"></slot>
+            </section>
         </section>
-        <section v-if="$slots.center" class="ump-layout__center" ref="center">
-            <slot name="center"></slot>
-        </section>
-        <section v-if="$slots.east" class="ump-layout__east" ref="east">
-            <slot name="east"></slot>
-        </section>
-        <section v-if="$slots.south" class="ump-layout__south" ref="south">
-            <slot name="south"></slot>
+        <section v-if="$slots.bottom" flex-box="0" class="ump-df-layout__bottom"
+                 ref="bottom">
+            <slot name="bottom"></slot>
         </section>
     </section>
 </template>
@@ -23,7 +26,3 @@
         name: "UmpLayout"
     }
 </script>
-
-<style scoped>
-
-</style>
