@@ -1,18 +1,28 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <ump-layout>
+        <template #north>
+            Here might be a page title
+        </template>
+        <template #west>
+            Here might be a page title
+        </template>
+        <template #center>
+            Here might be a page title
+        </template>
+        <template #east>
+            Here might be a page title
+        </template>
+    </ump-layout>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+    // @ is an alias to /src
+    import UmpLayout from '@/components/UmpLayout/UmpLayout.vue'
 
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        name: 'home',
+        components: {
+            UmpLayout
+        }
+    }
 </script>
