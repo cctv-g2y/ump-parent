@@ -22,17 +22,9 @@
 <script>
 
     const allImgSrc = require('@/assets/image/all.png')
-    import UmpLayout from '@/components/layout/UmpLayout.vue'
-    import UmpHeader from '@/components/header/UmpHeader.vue'
-    import UmpFooter from '@/components/footer/UmpFooter.vue'
 
     export default {
         name: 'home',
-        components: {
-            UmpLayout,
-            UmpFooter,
-            UmpHeader
-        },
         data() {
             return {
                 // [侧边栏宽度] 正常状态
