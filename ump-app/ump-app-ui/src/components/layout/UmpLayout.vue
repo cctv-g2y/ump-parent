@@ -26,3 +26,34 @@
         name: "UmpLayout"
     }
 </script>
+
+<style scoped type="text/scss">
+    .ump-df-layout {
+        height: 100%;
+        width: 100%;
+        min-width: 900px;
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+        position: relative;
+
+        .ump-df-layout__header {
+
+        }
+
+        .ump-df-layout__center {
+            .ump-df-layout__side {
+
+            }
+
+            .ump-df-layout__main {
+
+            }
+        }
+
+        .ump-df-layout__bottom {
+
+        }
+
+    }
+</style>
