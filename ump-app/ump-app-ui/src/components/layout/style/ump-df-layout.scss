@@ -1,0 +1,24 @@
+@import '../../../assets/style/public.scss';
+
+.ump-df-layout {
+  @extend %full;
+
+  .ump-df-layout__header {
+
+  }
+
+  .ump-df-layout__center {
+    .ump-df-layout__side {
+
+    }
+
+    .ump-df-layout__main {
+
+    }
+  }
+
+  .ump-df-layout__bottom {
+
+  }
+
+}
