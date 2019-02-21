@@ -1,0 +1,15 @@
+@import "../public";
+
+//自定义nprogress颜色
+#nprogress .bar {
+  background: $color-bg-3 !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px $color-bg-3, 0 0 5px $color-bg-3 !important;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: $color-bg-3 !important;
+  border-left-color: $color-bg-3 !important;
+}

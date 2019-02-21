@@ -1,5 +1,5 @@
 @import "public";
-
+@import "fixed/custom-nprogress";
 html, body {
   margin: 0px;
   height: 100%;
@@ -10,10 +10,12 @@ html, body {
     color: #717171;
     background-color: transparent;
   }
+
   a {
     color: #2e3e4e;
     text-decoration: none;
   }
+
   a:hover,
   a:focus {
     color: #4a647e;
