@@ -1,0 +1,68 @@
+@import "../../../assets/style/public";
+
+//layout整体骨架样式设置
+.layout-main {
+  @extend %full;
+
+  .layout-main-mask {
+    @extend %full;
+  }
+
+  .layout-header {
+    background-color: $color-bg-1;
+    color: $color-text-1;
+  }
+}
+
+//header 样式设置
+.layout-header {
+
+  //logo样式
+  .header-logo {
+    transition: width .3s;
+    float: left;
+    text-align: center;
+
+    img {
+      height: 60px;
+    }
+  }
+
+  //折叠按钮样式
+  .header-aside-btn {
+    float: left;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      font-size: 20px;
+      margin-top: 4px;
+    }
+  }
+
+  //顶部菜单样式
+  .header-menu {
+    transition: width .3s;
+    float: left;
+    padding: 20px;
+
+    a {
+      font-weight: bold;
+      height: 60px;
+      color: $color-text-4;
+      text-decoration: none;
+
+      &:hover {
+        color: $color-text-3;
+      }
+
+      &.router-link-exact-active {
+        color: $color-text-2;
+      }
+    }
+
+  }
+}

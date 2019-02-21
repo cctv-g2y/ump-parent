@@ -19,13 +19,4 @@
 </script>
 
 <style scoped type="text/css">
-    .header-logo {
-        transition: width .3s;
-        float: left;
-        text-align: center;
-    }
-
-    .header-logo > img {
-        height: 60px;
-    }
 </style>

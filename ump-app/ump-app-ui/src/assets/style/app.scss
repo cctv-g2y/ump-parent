@@ -7,6 +7,16 @@ html, body {
 
   #app {
     @extend %full;
-    background-color: $color-bg;
+    color: #717171;
+    background-color: transparent;
+  }
+  a {
+    color: #2e3e4e;
+    text-decoration: none;
+  }
+  a:hover,
+  a:focus {
+    color: #4a647e;
+    text-decoration: none;
   }
 }

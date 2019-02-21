@@ -3,12 +3,12 @@
         <!-- 半透明遮罩 -->
         <div class="layout-main-mask "></div>
         <ump-layout>
-            <ump-header slot="header" style="background-color: lightblue" flex>
+            <ump-header slot="header" class="layout-header" flex>
                 <header-logo flex-box="0"/>
                 <header-aside-btn flex-box="0"/>
                 <header-menu flex-box="1"/>
             </ump-header>
-            <template #side >
+            <template #side>
                 <div style="width: 200px">Here might be a page title</div>
             </template>
             <template #main>
@@ -18,8 +18,6 @@
                     </keep-alive>
                 </transition>
             </template>
-            <ump-footer slot="bottom" style="background-color: lightblue"> 底部栏
-            </ump-footer>
         </ump-layout>
     </div>
 </template>
@@ -40,6 +38,6 @@
     }
 </script>
 
-<style type="text/scss">
-
+<style lang="scss">
+    @import "style/aside-layout.scss";
 </style>
