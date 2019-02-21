@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    const allImgSrc = require('@/assets/image/all.png')
+    const allImgSrc = require('@/assets/image/logo.png')
     export default {
         name: "HeaderLogo",
         data() {
