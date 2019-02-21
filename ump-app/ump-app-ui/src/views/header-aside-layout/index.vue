@@ -8,8 +8,8 @@
                 <header-aside-btn flex-box="0"/>
                 <header-menu flex-box="1"/>
             </ump-header>
-            <template #side>
-                Here might be a page title
+            <template #side >
+                <div style="width: 200px">Here might be a page title</div>
             </template>
             <template #main>
                 <transition name="fade" mode="out-in" appear>

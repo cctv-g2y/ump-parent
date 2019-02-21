@@ -18,7 +18,7 @@ export const associateRoutes = [
                     title: '首页',
                     auth: false
                 },
-                component: Layout
+                component: () => import(/* webpackChunkName: "about" */ '../views/Test.vue')
             },
             {
                 path: '/about',
