@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <DataGrid :data="data" style="height:250px">
+    <div class="grid-test">
+        <DataGrid :data="data" style="height: 250px">
             <GridColumn field="itemid" title="Item ID"></GridColumn>
             <GridColumn field="name" title="Name"></GridColumn>
             <GridColumn field="listprice" title="List Price"
@@ -113,3 +113,14 @@
         }
     }
 </script>
+
+<style scoped type="text/css">
+    .grid-test {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+    }
+
+</style>

@@ -9,11 +9,14 @@
 
   .ump-df-layout__center {
     .ump-df-layout__side {
-
+      transition: width .3s;
+      position: relative;
     }
 
     .ump-df-layout__main {
-
+      padding: 0px;
+      position: relative;
+      overflow: hidden;
     }
   }
 

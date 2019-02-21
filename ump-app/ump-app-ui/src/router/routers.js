@@ -8,13 +8,26 @@ export const associateRoutes = [
     {
         path: '/',
         name: 'home',
-        component: Layout
+        redirect: {name: 'index'},
+        component: Layout,
+        children: [
+            {
+                path: 'index',
+                name: 'index',
+                meta: {
+                    title: '首页',
+                    auth: false
+                },
+                component: Layout
+            },
+            {
+                path: '/about',
+                name: 'about',
+                component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+            }
+        ]
     },
-    {
-        path: '/about',
-        name: 'about',
-        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-    }
+
 ]
 
 export default [
