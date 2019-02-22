@@ -1,4 +1,5 @@
-import '../../assets/style/flex.css'
+// flex 布局库
+import 'flex.css'
 //easyUI 组件
 import 'vx-easyui/dist/themes/bootstrap/easyui.css'
 import 'vx-easyui/dist/themes/icon.css'
@@ -13,7 +14,13 @@ import regular from '@fortawesome/fontawesome-free-regular'
 import brands from '@fortawesome/fontawesome-free-brands'
 
 //自定义组件
-import {UmpFooter, UmpHeader, UmpLayout} from '../../components'
+import {
+    UmpFooter,
+    UmpHeader,
+    UmpLayout,
+    UmpAside,
+    UmpMain
+} from '../../components'
 
 /**
  * UMP插件
@@ -40,5 +47,7 @@ export default {
         Vue.component('UmpFooter', UmpFooter)
         Vue.component('UmpHeader', UmpHeader)
         Vue.component('UmpLayout', UmpLayout)
+        Vue.component('UmpAside', UmpAside)
+        Vue.component('UmpMain', UmpMain)
     }
 }

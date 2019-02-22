@@ -12,6 +12,20 @@
     background-color: $color-bg-1;
     color: $color-text-1;
   }
+
+  .layout-aside {
+    @extend %full;
+    overflow: hidden;
+    background-color: $color-bg-1;
+    color: $color-text-1;
+  }
+
+  .layout-main {
+    @extend %full;
+
+    .layout-main-layer {
+    }
+  }
 }
 
 //header 样式设置
@@ -30,6 +44,7 @@
 
   //折叠按钮样式
   .header-aside-btn {
+    @extend %unable-select;
     float: left;
     height: 60px;
     width: 60px;
@@ -63,6 +78,31 @@
         color: $color-text-2;
       }
     }
+  }
+
+  .header-fullscreen {
+    @extend %unable-select;
+    float: left;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      font-size: 20px;
+      margin-top: 4px;
+    }
+  }
+}
+
+//左导航样式
+.layout-aside {
+  .aside-menu {
+
+  }
+
+  .aside-bottom {
 
   }
 }

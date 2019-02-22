@@ -2,37 +2,68 @@
     <div class="layout-main">
         <!-- 半透明遮罩 -->
         <div class="layout-main-mask "></div>
-        <ump-layout>
+        <ump-layout :aside-width="asideWidth">
             <ump-header slot="header" class="layout-header" flex>
                 <header-logo flex-box="0"/>
                 <header-aside-btn flex-box="0"/>
                 <header-menu flex-box="1"/>
+                <header-fullscreen flex-box="0"/>
             </ump-header>
-            <template #side>
-                <div style="width: 200px">Here might be a page title</div>
-            </template>
-            <template #main>
-                <transition name="fade" mode="out-in" appear>
-                    <keep-alive>
-                        <router-view/>
-                    </keep-alive>
+            <ump-aside :width="asideWidth" slot="side" flex-box="1"
+                       class="layout-aside"
+                       flex="dir:top"
+            >
+                <aside-menu flex-box="1"/>
+                <aside-bottom flex-box="0"/>
+            </ump-aside>
+            <ump-main slot="main" class="layout-main" flex-box="1">
+                <transition name="fade-scale" mode="out-in" appear>
+                    <div class="layout-main-layer" flex="dir:top">
+                        <keep-alive>
+                            <router-view/>
+                        </keep-alive>
+                    </div>
                 </transition>
-            </template>
+            </ump-main>
         </ump-layout>
     </div>
 </template>
 
 <script>
-    import {HeaderLogo, HeaderAsideBtn, HeaderMenu} from './components'
+    import {
+        HeaderLogo,
+        HeaderAsideBtn,
+        HeaderMenu,
+        HeaderFullscreen,
+        AsideBottom,
+        AsideMenu
+    } from './components'
+    import {mapState} from 'vuex'
 
     export default {
         name: 'layout-header-aside',
-        components: {HeaderMenu, HeaderLogo, HeaderAsideBtn, HeaderMenu},
+        components: {
+            HeaderMenu,
+            HeaderLogo,
+            HeaderAsideBtn,
+            HeaderFullscreen,
+            AsideBottom,
+            AsideMenu
+        },
         data() {
             return {
                 // [侧边栏宽度] 正常状态
-                asideWidth: '200px',
-                allImgSrc: allImgSrc,
+                asideDefWidth: '200px',
+                // [侧边栏宽度] 折叠状态
+                asideWidthCollapse: '65px',
+            }
+        },
+        computed: {
+            ...mapState('portal/common', {
+                asideCollapse: state => state.asideCollapse
+            }),
+            asideWidth: function () {
+                return this.asideCollapse ? this.asideWidthCollapse : this.asideDefWidth
             }
         },
     }
