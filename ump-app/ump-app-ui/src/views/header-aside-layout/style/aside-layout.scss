@@ -16,7 +16,7 @@
   .layout-aside {
     @extend %full;
     overflow: hidden;
-    background-color: $color-bg-1;
+    background-color: $color-bg-aside;
     color: $color-text-1;
   }
 
@@ -102,7 +102,21 @@
 
   }
 
+  //导航底部样式信息
   .aside-bottom {
+    background-color: $color-bg-aside-1;
+    border-color: $color-bg-aside-1;
+    color: $color-text-1;
 
+    .aside-bottom-btn {
+      @extend %unable-select;
+      background-color: $color-bg-1;
+      color: $color-text-3;
+      float: left;
+      width: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
