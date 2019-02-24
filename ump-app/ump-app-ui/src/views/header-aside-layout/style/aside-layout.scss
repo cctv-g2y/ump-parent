@@ -2,8 +2,13 @@
 
 //layout整体骨架样式设置
 .layout-main {
-  @extend %full;
-
+  height: 100%;
+  width: 100%;
+  min-width: 900px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  position: relative;
   .layout-main-mask {
     @extend %full;
   }
@@ -99,7 +104,8 @@
 //左导航样式
 .layout-aside {
   .aside-menu {
-
+    overflow: hidden;
+    position: relative;
   }
 
   //导航底部样式信息
@@ -107,7 +113,6 @@
     background-color: $color-bg-aside-1;
     border-color: $color-bg-aside-1;
     color: $color-text-1;
-
     .aside-bottom-btn {
       @extend %unable-select;
       background-color: $color-bg-1;

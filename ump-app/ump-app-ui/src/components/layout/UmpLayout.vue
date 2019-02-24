@@ -4,7 +4,7 @@
                  ref="header">
             <slot name="header"></slot>
         </section>
-        <section flex-box="1" flex="dir:left" class="ump-df-layout__center">
+        <section flex-box="1" flex class="ump-df-layout__center">
             <section v-if="$slots.side" flex="" flex-box="0" :style="{width:asideWidth,
             opacity:  1}" class="ump-df-layout__side"
                      ref="side">

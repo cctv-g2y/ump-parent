@@ -1,5 +1,5 @@
 <template>
-    <div class="aside-menu">
+    <div class="aside-menu" >
         <SideMenu :style="{width:width}"
                   :data="menus"
                   :collapsed="asideCollapse">
@@ -9,6 +9,7 @@
 
 <script>
     import {mapState, mapActions} from 'vuex'
+    import BScroll from 'better-scroll'
 
     export default {
         name: "AsideMenu",
@@ -20,9 +21,45 @@
                 return this.asideCollapse ? "65px" : "200px";
             }
         },
+        watch: {
+            asideCollapse(val) {
+                this.scrollDestroy()
+                setTimeout(() => {
+                    this.scrollInit()
+                }, 500)
+            }
+        },
+        methods: {
+            scrollInit() {
+                this.BS = new BScroll(this.$el, {
+                    mouseWheel: true,
+                    click: true,
+                    scrollbar: {
+                        fade: true,
+                        interactive: false
+                    }
+                })
+                this.BS.refresh();
+            },
+            scrollDestroy() {
+                try {
+                    this.BS.on
+                } catch (e) {
+                    delete this.BS
+                    this.BS = null
+                }
+            }
+        },
+        mounted() {
+            this.scrollInit()
+        },
+        beforeDestroy() {
+            this.scrollDestroy()
+        },
         data() {
             return {
                 selection: null,
+                BS: null,
                 menus: [
                     {
                         text: "Forms",
@@ -61,6 +98,21 @@
                                         text: "Item2"
                                     }
                                 ]
+                            }
+                        ]
+                    },
+                    {
+                        text: "Layout",
+                        iconCls: "fa fa-table",
+                        children: [
+                            {
+                                text: "Panel"
+                            },
+                            {
+                                text: "Accordion"
+                            },
+                            {
+                                text: "Tabs"
                             }
                         ]
                     },

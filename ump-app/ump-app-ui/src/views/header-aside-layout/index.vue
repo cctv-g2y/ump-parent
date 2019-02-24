@@ -9,7 +9,7 @@
                 <header-menu flex-box="1"/>
                 <header-fullscreen flex-box="0"/>
             </ump-header>
-            <ump-aside :width="asideWidth" slot="side" flex-box="1"
+            <ump-aside :width="asideWidth" slot="side" flex-box="0"
                        class="layout-aside"
                        flex="dir:top"
             >
