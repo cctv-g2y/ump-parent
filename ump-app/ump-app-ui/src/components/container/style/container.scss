@@ -1,0 +1,94 @@
+@import '../../../assets/style/public.scss';
+
+%baseContainer {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  bottom: 0px;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.container-component {
+  @extend %full;
+  overflow: hidden;
+}
+
+//full 容器样式 --------------------
+.ump-full-container {
+  @extend %baseContainer;
+
+  .ump-full-container__header {
+    padding: 20px;
+  }
+
+  .ump-full-container__body {
+    flex-grow: 1;
+    padding: 20px 20px;
+    overflow: auto;
+    position: relative;
+  }
+
+  .ump-full-container__footer {
+    padding: 20px;
+  }
+}
+
+//full 容器样式 end--------------------
+
+//card 容器样式 --------------------
+.ump-card-container {
+  @extend %baseContainer;
+
+  .ump-card-container__header {
+    padding: 20px;
+  }
+
+  .ump-card-container__body {
+    flex-grow: 1;
+    overflow: auto;
+
+    .ump-card-container__body-card {
+      position: relative;
+      margin-bottom: 20px;
+      padding: 20px;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+
+  .ump-card-container__footer {
+    padding: 20px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+}
+
+//card 容器样式 end--------------------
+
+//ghost 容器样式 --------------------
+.ump-ghost-container {
+  @extend %baseContainer;
+
+  .ump-ghost-container__header {
+    padding: 20px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  .ump-ghost-container__body {
+    flex-grow: 1;
+    overflow: auto;
+    position: relative;
+  }
+
+  .ump-ghost-container__footer {
+    padding: 20px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+}
+
+//ghost 容器样式 end--------------------

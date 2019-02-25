@@ -25,7 +25,8 @@ import {
     UmpAside,
     UmpMain,
     UmpMenuSub,
-    UmpMenuItem
+    UmpMenuItem,
+    UmpContainer
 } from '../../components'
 
 /**
@@ -60,5 +61,6 @@ export default {
         Vue.component('UmpMain', UmpMain)
         Vue.component('UmpMenuSub', UmpMenuSub)
         Vue.component('UmpMenuItem', UmpMenuItem)
+        Vue.component('UmpContainer', UmpContainer)
     }
 }

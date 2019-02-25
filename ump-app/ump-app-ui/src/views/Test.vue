@@ -1,5 +1,8 @@
 <template>
-    <div>测试页面</div>
+    <ump-container type="card">
+        <div>测试页面</div>
+    </ump-container>
+
 </template>
 
 <script>

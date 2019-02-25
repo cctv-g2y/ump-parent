@@ -1,5 +1,5 @@
 <template>
-    <div class="grid-test">
+    <ump-container>
         <DataGrid :data="data" style="height: 250px">
             <GridColumn field="itemid" title="Item ID"></GridColumn>
             <GridColumn field="name" title="Name"></GridColumn>
@@ -11,7 +11,7 @@
             <GridColumn field="status" title="Status"
                         align="center"></GridColumn>
         </DataGrid>
-    </div>
+    </ump-container>
 </template>
 <script>
     export default {
