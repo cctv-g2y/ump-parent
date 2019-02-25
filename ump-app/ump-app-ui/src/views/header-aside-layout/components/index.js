@@ -4,6 +4,8 @@ import HeaderFullscreen from './header-fullscreen'
 import HeaderMenu from './header-menu'
 import AsideBottom from './aside-bottom/AsideBottom'
 import AsideMenu from './aside-menu/AsideMenu'
+import ContainerPage from './container-page/ContainerPage'
+import ContainerTabs from './container-tabs/ContainerTabs'
 
 export {
     HeaderLogo,
@@ -11,5 +13,7 @@ export {
     HeaderFullscreen,
     HeaderMenu,
     AsideBottom,
-    AsideMenu
+    AsideMenu,
+    ContainerPage,
+    ContainerTabs
 }

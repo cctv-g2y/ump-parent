@@ -19,9 +19,8 @@
             <ump-main slot="main" class="layout-main" flex-box="1">
                 <transition name="fade-scale" mode="out-in" appear>
                     <div class="layout-main-layer" flex="dir:top">
-                        <keep-alive>
-                            <router-view/>
-                        </keep-alive>
+                        <container-tabs flex-box="0"/>
+                        <container-page flex-box="1"/>
                     </div>
                 </transition>
             </ump-main>
@@ -36,7 +35,9 @@
         HeaderMenu,
         HeaderFullscreen,
         AsideBottom,
-        AsideMenu
+        AsideMenu,
+        ContainerPage,
+        ContainerTabs
     } from './components'
     import {mapState} from 'vuex'
 
@@ -48,7 +49,9 @@
             HeaderAsideBtn,
             HeaderFullscreen,
             AsideBottom,
-            AsideMenu
+            AsideMenu,
+            ContainerPage,
+            ContainerTabs
         },
         data() {
             return {

@@ -27,9 +27,22 @@
   }
 
   .layout-main {
-    @extend %full;
+    padding: 0px;
+    position: relative;
+    overflow: hidden;
 
     .layout-main-layer {
+      @extend %full;
+
+      .layout-main-layer__header {
+        transition: width .3s;
+        position: relative;
+        padding-right: 20px;
+      }
+
+      .layout-main-layer__page {
+        position: relative;
+      }
     }
   }
 }
@@ -219,5 +232,63 @@
 }
 
 //左导航样式结束------------------------------
+
+//内容样式------------------------------
+.layout-main {
+  .layout-main-layer {
+    .layout-main-layer__header {
+      .container-header-tabs__content {
+        overflow: auto;
+        position: relative;
+        border-style: solid;
+        border-width: 1px;
+
+        .container-header-tabs__content-inner {
+          .container-header-tabs__content-inner__control {
+            .el-tabs__header.is-top {
+              margin-bottom: 0px;
+              margin-top: 2px;
+            }
+
+            .el-tabs__content {
+              display: none;
+            }
+
+            .el-tabs__nav {
+              overflow: hidden;
+
+              & .el-tabs__item:first-child .el-icon-close {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+
+      .container-header-tabs__btn {
+        position: relative;
+        bottom: -3px;
+
+        .el-dropdown {
+          .el-button-group {
+            .el-button:first-child {
+              border-bottom-left-radius: 0px;
+            }
+
+            .el-button:last-child {
+              border-bottom-right-radius: 0px;
+            }
+
+            .el-dropdown__caret-button {
+              border-bottom-color: #303133;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//内容样式结束------------------------------
 
 
