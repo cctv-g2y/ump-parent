@@ -1,6 +1,6 @@
 @import "../../../assets/style/public";
 
-//layout整体骨架样式设置
+//layout整体骨架样式设置 开始---------------------------
 .layout-main {
   height: 100%;
   width: 100%;
@@ -9,6 +9,7 @@
   background-position: center;
   overflow: hidden;
   position: relative;
+
   .layout-main-mask {
     @extend %full;
   }
@@ -33,7 +34,8 @@
   }
 }
 
-//header 样式设置
+//layout整体骨架样式设置 结束---------------------------
+//header 样式设置 开始------------------------------
 .layout-header {
 
   //logo样式
@@ -101,11 +103,79 @@
   }
 }
 
-//左导航样式
+//header 样式设置 结束------------------------------
+
+
+//左导航样式开始------------------------------
+%side-menu-svg {
+  width: 30px;
+  text-align: center;
+}
+
+//菜单text
+%side-menu-text {
+  font-size: 14px;
+  color: #9db1c5;
+}
+
+%menu-hover-focus {
+  color: #fff;
+  background-color: inherit;
+  background-color: #409EFF !important;
+  text-shadow: none;
+}
+
+%menu-item-title {
+  @extend %side-menu-text;
+  height: 50px;
+  line-height: 50px;
+  border-top: 1px solid transparent;
+  border-color: rgba(255, 255, 255, 0.05);
+
+  &:hover,
+  &:focus {
+    @extend %menu-hover-focus;
+  }
+
+  i {
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+
+    svg {
+      @extend %side-menu-svg;
+    }
+  }
+}
+
 .layout-aside {
+
   .aside-menu {
     overflow: hidden;
     position: relative;
+    // [菜单] 正常状态
+    .el-menu {
+      @extend %unable-select;
+      background-color: transparent;
+      color: #9db1c5;
+      border-right: none;
+
+      & .el-submenu__icon-arrow {
+        color: #fff;
+      }
+
+      & .el-menu-item, & .el-submenu__title {
+        @extend %menu-item-title;
+        padding: 0 10px !important;
+      }
+
+      //[菜单] 折叠样式
+      &.el-menu--collapse {
+        & .el-menu-item, & .el-submenu__title {
+          @extend %menu-item-title;
+          padding: 0 20px !important;
+        }
+      }
+    }
+
   }
 
   //导航底部样式信息
@@ -113,6 +183,7 @@
     background-color: $color-bg-aside-1;
     border-color: $color-bg-aside-1;
     color: $color-text-1;
+
     .aside-bottom-btn {
       @extend %unable-select;
       background-color: $color-bg-1;
@@ -125,3 +196,27 @@
     }
   }
 }
+
+//菜单的弹出层部分样式
+.el-menu--vertical {
+  .el-menu.el-menu--popup {
+    @extend %unable-select;
+    background-color: #25313e !important;
+    color: #9db1c5;
+    border-right: none;
+    padding: 0px !important;
+
+    & .el-submenu__icon-arrow {
+      color: #fff;
+    }
+
+    & .el-menu-item, & .el-submenu__title {
+      @extend %menu-item-title;
+      padding: 0 10px !important;
+    }
+  }
+}
+
+//左导航样式结束------------------------------
+
+

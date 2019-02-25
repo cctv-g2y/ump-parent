@@ -3,6 +3,16 @@ import UmpHeader from './header/UmpHeader'
 import UmpLayout from './layout/UmpLayout'
 import UmpAside from './aside/UmpAside'
 import UmpMain from './main/UmpMain'
+import UmpMenuSub from './menu/UmpMenuSub'
+import UmpMenuItem from './menu/UmpMenuItem'
 
-export {UmpFooter, UmpHeader, UmpLayout, UmpAside, UmpMain}
+export {
+    UmpFooter,
+    UmpHeader,
+    UmpLayout,
+    UmpAside,
+    UmpMain,
+    UmpMenuSub,
+    UmpMenuItem
+}
 

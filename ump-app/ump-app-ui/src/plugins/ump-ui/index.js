@@ -13,13 +13,19 @@ import solid from '@fortawesome/fontawesome-free-solid'
 import regular from '@fortawesome/fontawesome-free-regular'
 import brands from '@fortawesome/fontawesome-free-brands'
 
+//Element
+import Element from 'element-ui'
+import '../element-ui/element-variables.scss'
+
 //自定义组件
 import {
     UmpFooter,
     UmpHeader,
     UmpLayout,
     UmpAside,
-    UmpMain
+    UmpMain,
+    UmpMenuSub,
+    UmpMenuItem
 } from '../../components'
 
 /**
@@ -43,11 +49,16 @@ export default {
         fontawesome.library.add(brands)
         Vue.component('font-awesome-icon', FontAwesomeIcon)
 
+        // Element
+        Vue.use(Element)
+
         //使用自定义全局组件
         Vue.component('UmpFooter', UmpFooter)
         Vue.component('UmpHeader', UmpHeader)
         Vue.component('UmpLayout', UmpLayout)
         Vue.component('UmpAside', UmpAside)
         Vue.component('UmpMain', UmpMain)
+        Vue.component('UmpMenuSub', UmpMenuSub)
+        Vue.component('UmpMenuItem', UmpMenuItem)
     }
 }

@@ -1,9 +1,16 @@
 <template>
-    <div class="aside-menu" >
-        <SideMenu :style="{width:width}"
-                  :data="menus"
-                  :collapsed="asideCollapse">
-        </SideMenu>
+    <div class="aside-menu">
+        <el-menu
+                :collapse="asideCollapse"
+                :unique-opened="true"
+                ref="menu"
+                @select="handleMenuSelect">
+            <template v-for="(menu, menuIndex) in menus">
+                <ump-menu-item v-if="menu.children === undefined" :menu="menu"
+                              :key="menuIndex"/>
+                <ump-menu-sub v-else :menu="menu" :key="menuIndex"/>
+            </template>
+        </el-menu>
     </div>
 </template>
 
@@ -30,6 +37,17 @@
             }
         },
         methods: {
+            handleMenuSelect(index) {
+                if (/^d2-menu-empty-\d+$/.test(index) || index === undefined) {
+                    this.$message.warning('临时菜单')
+                } else if (/^https:\/\/|http:\/\//.test(index)) {
+                    this.$message.warning(index)
+                } else {
+                    this.$router.push({
+                        path: index
+                    })
+                }
+            },
             scrollInit() {
                 this.BS = new BScroll(this.$el, {
                     mouseWheel: true,
@@ -62,72 +80,118 @@
                 BS: null,
                 menus: [
                     {
-                        text: "Forms",
-                        iconCls: "fa fa-wpforms",
-                        state: "open",
+                        path: '/index',
+                        title: '首页',
+                        icon: 'home'
+                    },
+                    {
+                        path: '/test',
+                        title: '测试',
+                        icon: 'home'
+                    },
+                    {
+                        path: '/table',
+                        title: '表格',
+                        icon: 'puzzle-piece',
                         children: [
                             {
-                                text: "Form Element"
+                                path: '/table/baseTable',
+                                title: '基础表格',
+                                icon: 'github'
                             },
                             {
-                                text: "Wizard"
+                                path: '/table/stripeTable',
+                                title: '斑马纹表格',
+                                icon: 'globe'
                             },
                             {
-                                text: "File Upload"
+                                path: '/table/sortTable',
+                                title: '排序表格',
+                                icon: 'globe'
                             }
                         ]
                     },
                     {
-                        text: "Mail",
-                        iconCls: "fa fa-at",
-                        selected: true,
+                        title: '功能1',
+                        icon: 'puzzle-piece',
                         children: [
                             {
-                                text: "Inbox"
-                            },
-                            {
-                                text: "Sent"
-                            },
-                            {
-                                text: "Trash",
+                                title: '新窗口打开链接1',
+                                icon: 'link',
                                 children: [
                                     {
-                                        text: "Item1"
+                                        path: 'https://github.com/d2-projects/d2-admin',
+                                        title: 'D2Admin Github',
+                                        icon: 'github'
                                     },
                                     {
-                                        text: "Item2"
+                                        path: 'https://juejin.im/user/57a48b632e958a006691b946/posts',
+                                        title: '掘金',
+                                        icon: 'globe'
+                                    },
+                                    {
+                                        path: 'https://my.oschina.net/u/3871516',
+                                        title: '开源中国',
+                                        icon: 'globe'
+                                    },
+                                    {
+                                        path: 'https://www.zhihu.com/people/fairy-ever/activities',
+                                        title: '知乎',
+                                        icon: 'globe'
+                                    },
+                                    {
+                                        path: 'https://segmentfault.com/blog/liyang-note-book',
+                                        title: 'segmentfault 专栏',
+                                        icon: 'globe'
+                                    },
+                                    {
+                                        path: 'http://www.fairyever.com/',
+                                        title: 'www.fairyever.com',
+                                        icon: 'globe'
                                     }
                                 ]
                             }
                         ]
-                    },
-                    {
-                        text: "Layout",
-                        iconCls: "fa fa-table",
+                    }
+                    , {
+                        title: '功能2',
+                        icon: 'puzzle-piece',
                         children: [
                             {
-                                text: "Panel"
-                            },
-                            {
-                                text: "Accordion"
-                            },
-                            {
-                                text: "Tabs"
-                            }
-                        ]
-                    },
-                    {
-                        text: "Layout",
-                        iconCls: "fa fa-table",
-                        children: [
-                            {
-                                text: "Panel"
-                            },
-                            {
-                                text: "Accordion"
-                            },
-                            {
-                                text: "Tabs"
+                                title: '新窗口打开链接3',
+                                icon: 'link',
+                                children: [
+                                    {
+                                        path: 'https://github.com/d2-projects/d2-admin',
+                                        title: 'D2Admin Github',
+                                        icon: 'github'
+                                    },
+                                    {
+                                        path: 'https://juejin.im/user/57a48b632e958a006691b946/posts',
+                                        title: '掘金',
+                                        icon: 'globe'
+                                    },
+                                    {
+                                        path: 'https://my.oschina.net/u/3871516',
+                                        title: '开源中国',
+                                        icon: 'globe'
+                                    },
+                                    {
+                                        path: 'https://www.zhihu.com/people/fairy-ever/activities',
+                                        title: '知乎',
+                                        icon: 'globe'
+                                    },
+                                    {
+                                        path: 'https://segmentfault.com/blog/liyang-note-book',
+                                        title: 'segmentfault 专栏',
+                                        icon: 'globe'
+                                    },
+                                    {
+                                        path: 'http://www.fairyever.com/',
+                                        title: 'www.fairyever.com',
+                                        icon: 'globe'
+                                    }
+                                ]
                             }
                         ]
                     }
