@@ -91,14 +91,13 @@
                 'login'
             ]),
             submitBtn() {
-                this.$refs.loginForm.validate((valid) => {
+                this.$refs['loginForm'].validate((valid) => {
                     if (valid) {
                         this.login({
                             vm: this,
-                            userName: 'admin',
-                            password: '1234567'
+                            userName: this.user.username,
+                            password: this.user.password
                         }).then(() => {
-                            // 重定向对象不存在则返回顶层路径
                             this.$router.replace(this.$route.query.redirect || '/')
                         })
                     } else {

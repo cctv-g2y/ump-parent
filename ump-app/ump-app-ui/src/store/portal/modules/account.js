@@ -1,22 +1,26 @@
 import {Message, MessageBox} from 'element-ui'
 import router from '../../../router'
 import {login} from '@api/account'
+import cookies from '../../../utils/cookies'
 
 /**
  * 账户状态集信息
  */
 export default {
     namespaced: true,
-    state: {},
+    state: {
+        user: {}
+    },
     actions: {
         /**
          * 用户登录方法
+         * @param commit
          * @param dispatch
          * @param userName
          * @param password
          * @param rememberMe
          */
-        login({dispatch}, {
+        login({commit, dispatch}, {
             userName = '',
             password = '',
             rememberMe = false
@@ -28,7 +32,11 @@ export default {
                     rememberMe: rememberMe
                 }
                 login(data).then(async res => {
-                    console.log('res: ', res)
+                    let resData = res.data.data
+                    cookies.set('uuid', resData.uuid)
+                    cookies.set('token', resData.token)
+                    commit('setUser', resData.data)
+                    console.log('res: ', resData)
                     resolve()
                 }).catch(error => {
                     reject(error)
@@ -67,6 +75,16 @@ export default {
                     resolve()
                 }
             })
+        }
+    },
+    mutations: {
+        /**
+         * 设置用户信息
+         * @param state
+         * @param user
+         */
+        setUser(state, user) {
+            state.user = Object.assign({}, user)
         }
     }
 }

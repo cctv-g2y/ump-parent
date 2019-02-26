@@ -17,7 +17,7 @@ export const associateRoutes = [
                 name: 'index',
                 meta: {
                     title: '首页',
-                    auth: false
+                    auth: true
                 },
                 component: () => import(/* webpackChunkName: "about" */ '../views/Test.vue')
             },

@@ -17,6 +17,7 @@
     "better-scroll": "^1.14.1",
     "element-ui": "^2.5.4",
     "flex.css": "^1.1.7",
+    "js-cookie": "^2.2.0",
     "normalize.css": "^8.0.1",
     "screenfull": "^4.0.1",
     "vue": "^2.5.22",
