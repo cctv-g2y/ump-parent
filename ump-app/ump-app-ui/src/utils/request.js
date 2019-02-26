@@ -1,6 +1,12 @@
 import axios from 'axios'
 import _ from 'lodash'
+import {Message} from 'element-ui'
 
+/**
+ * 响应成功标识
+ * @type {string}
+ */
+const RESP_SUCCESS = '000000'
 
 /**
  *  http 错误列表
@@ -53,12 +59,30 @@ const HTTP_ERROR_MAP = [
     }
 ]
 
+
+/**
+ * 创建错误信息
+ * @param retCode
+ * @param retDesc
+ */
+function errorCreate(retCode, retDesc) {
+    const err = new Error(retCode + '|' + retDesc)
+    logError(err)
+    throw err
+}
+
 // 记录和显示错误
 function logError(err) {
     // 打印到控制台
     if (process.env.NODE_ENV === 'development') {
         console.log('Api-Resp Error:', err)
     }
+    // 显示提示
+    Message({
+        message: err.message,
+        type: 'error',
+        duration: 5 * 1000
+    })
 }
 
 
@@ -84,10 +108,17 @@ request.interceptors.request.use(function (config) {
 /**
  * 添加响应拦截器
  */
-request.interceptors.response.use(function (response) {
-    // 对响应数据做点什么
-    return response;
-}, function (error) {
+request.interceptors.response.use(response => {
+    const data = response.data
+    // 这个状态码是和后端约定的
+    const {retCode} = data
+    if (retCode === undefined || retCode === RESP_SUCCESS) {
+        return response
+    }
+
+    let {retDesc} = data
+    errorCreate(retCode, retDesc || '未知错误')
+}, error => {
     if (error && error.response) {
         let errMsg = _.find(HTTP_ERROR_MAP, errMsg => {
             return errMsg.code == error.response.status

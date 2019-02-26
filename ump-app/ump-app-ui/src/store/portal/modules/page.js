@@ -71,9 +71,7 @@ export default {
                     pageOpendIndex = same ? index : pageOpendIndex
                     return same
                 })
-                if (pageOpend) {
-                    // 页面以前打开过
-                } else {
+                if (!pageOpend) {
                     // 如果这里没有找到 page 代表这个路由虽然在框架内 但是不参与标签页显示
                     let page = state.pool.find(t => t.name === name)
                     if (page) {
@@ -127,7 +125,8 @@ export default {
                 }
                 // 最后需要判断是否需要跳到首页
                 if (isCurrent) {
-                    const {name = '', params = {}, query = {}} = newPage
+                    console.log('打开--------------------------------')
+                    const {name = 'index', params = {}, query = {}} = newPage
                     let routerObj = {
                         name,
                         params,
@@ -139,117 +138,77 @@ export default {
                 resolve()
             })
         },
+
         /**
-         * 关闭左tab
+         * 根据类型关闭
          * @param state
          * @param commit
          * @param dispatch
-         * @param pageSelect
+         * @param type 类型 eft,right,other,all
+         * @param pageSelect 当前tab
          * @param vm
-         * @returns {Promise}
          */
-        closeLeft({state, commit, dispatch}, {pageSelect, vm} = {}) {
+        closeByType({state, commit, dispatch}, {type, pageSelect, vm} = {}) {
             return new Promise(async resolve => {
-                const pageAim = pageSelect || state.current
+                const currentPage = pageSelect || state.current
                 let currentIndex = 0
                 state.opened.forEach((page, index) => {
-                    if (page.fullPath === pageAim) {
+                    if (page.fullPath === currentPage) {
                         currentIndex = index
                     }
                 })
-                if (currentIndex > 0) {
-                    // 删除打开的页面 并在缓存设置中删除
-                    state.opened.splice(1, currentIndex - 1).forEach(({name}) => commit('keepAliveRemove', name))
-                }
-                state.current = pageAim
-                if (vm && vm.$route.fullPath !== pageAim) {
-                    vm.$router.push(pageAim)
-                }
-                // end
-                resolve()
-            })
-        },
-        /**
-         * 关闭右tab
-         * @param state
-         * @param commit
-         * @returns {Promise}
-         */
-        closeRight({state, commit, dispatch}, {pageSelect, vm} = {}) {
-            return new Promise(async resolve => {
-                const pageAim = pageSelect || state.current
-                let currentIndex = 0
-                state.opened.forEach((page, index) => {
-                    if (page.fullPath === pageAim) {
-                        currentIndex = index
-                    }
-                })
-                // 删除打开的页面 并在缓存设置中删除
-                state.opened.splice(currentIndex + 1).forEach(({name}) => commit('keepAliveRemove', name))
-                // 设置当前的页面
-                state.current = pageAim
-                if (vm && vm.$route.fullPath !== pageAim) {
-                    vm.$router.push(pageAim)
-                }
-                // end
-                resolve()
-            })
-        },
-        /**
-         * 关闭其他tab
-         * @param state
-         * @param commit
-         * @param dispatch
-         * @param pageSelect
-         * @param vm
-         * @returns {Promise}
-         */
-        closeOther({state, commit, dispatch}, {pageSelect, vm} = {}) {
-            return new Promise(async resolve => {
-                const pageAim = pageSelect || state.current
-                let currentIndex = 0
-                state.opened.forEach((page, index) => {
-                    if (page.fullPath === pageAim) {
-                        currentIndex = index
-                    }
-                })
-                // 删除打开的页面数据 并更新缓存设置
-                if (currentIndex === 0) {
-                    state.opened.splice(1).forEach(({name}) => commit('keepAliveRemove', name))
-                } else {
-                    state.opened.splice(currentIndex + 1).forEach(({name}) => commit('keepAliveRemove', name))
-                    state.opened.splice(1, currentIndex - 1).forEach(({name}) => commit('keepAliveRemove', name))
-                }
-                // 设置新的页面
-                state.current = pageAim
-                if (vm && vm.$route.fullPath !== pageAim) {
-                    vm.$router.push(pageAim)
+                //根据类型关闭tab
+                switch (type) {
+                    case 'left':
+                        if (currentIndex > 0) {
+                            // 删除打开的页面 并在缓存设置中删除
+                            state.opened.splice(1, currentIndex - 1).forEach(({name}) => commit('keepAliveRemove', name))
+                        }
+                        state.current = currentPage
+                        if (vm && vm.$route.fullPath !== currentPage) {
+                            vm.$router.push(currentPage)
+                        }
+                        break
+                    case 'right':
+                        // 删除打开的页面 并在缓存设置中删除
+                        state.opened.splice(currentIndex + 1).forEach(({name}) => commit('keepAliveRemove', name))
+                        // 设置当前的页面
+                        state.current = currentPage
+                        if (vm && vm.$route.fullPath !== currentPage) {
+                            vm.$router.push(currentPage)
+                        }
+                        break
+                    case 'other':
+                        // 删除打开的页面数据 并更新缓存设置
+                        if (currentIndex === 0) {
+                            state.opened.splice(1).forEach(({name}) => commit('keepAliveRemove', name))
+                        } else {
+                            state.opened.splice(currentIndex + 1).forEach(({name}) => commit('keepAliveRemove', name))
+                            state.opened.splice(1, currentIndex - 1).forEach(({name}) => commit('keepAliveRemove', name))
+                        }
+                        // 设置新的页面
+                        state.current = currentPage
+                        if (vm && vm.$route.fullPath !== currentPage) {
+                            vm.$router.push(currentPage)
+                        }
+                        break
+                    case 'all':
+                        // 删除打开的页面 并在缓存设置中删除
+                        state.opened.splice(1).forEach(({name}) => commit('keepAliveRemove', name))
+                        // 关闭所有的标签页后需要判断一次现在是不是在首页
+                        if (vm.$route.name !== 'index') {
+                            vm.$router.push({
+                                name: 'index'
+                            })
+                        }
+                        break
+                    default:
+                        //不做任何操作
+                        break
                 }
                 // end
                 resolve()
-            })
-        },
-        /**
-         * 关闭所有tab
-         * @param state
-         * @param commit
-         * @param dispatch
-         * @param vm
-         * @returns {Promise}
-         */
-        closeAll({state, commit, dispatch}, vm) {
-            return new Promise(async resolve => {
-                // 删除打开的页面 并在缓存设置中删除
-                state.opened.splice(1).forEach(({name}) => commit('keepAliveRemove', name))
-                // 关闭所有的标签页后需要判断一次现在是不是在首页
-                if (vm.$route.name !== 'index') {
-                    vm.$router.push({
-                        name: 'index'
-                    })
-                }
-                // end
-                resolve()
-            })
+            });
         }
     },
     mutations: {

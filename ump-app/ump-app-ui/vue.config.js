@@ -13,7 +13,7 @@ process.env.NODE_ENV = 'development'
 process.env.VUE_APP_API = '/api/'
 process.env.VUE_APP_VERSION = pkg.version
 process.env.VUE_APP_BUILD_TIME = date
-process.env.VUE_APP_BUILD_MODE = 'nomock'
+process.env.VUE_APP_BUILD_MODE = 'mock'
 
 
 module.exports = {
