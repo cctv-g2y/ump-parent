@@ -4,7 +4,8 @@ import router from './router'
 import store from './store'
 import Ump from "./plugins/ump-ui";
 
-Vue.use(Ump)
+//传入store
+Vue.use(Ump, {store})
 new Vue({
     router,
     store,
