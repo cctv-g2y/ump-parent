@@ -9,15 +9,15 @@ import com.baomidou.mybatisplus.enums.IdType;
 import java.io.Serializable;
 
 /**
- * 角色对应权限的实体类
+ * 角色权限对应关系
  *
  * @author guofazhan
- * @version [版本号, 2019/2/13 0013 0001]
+ * @version [版本号, 2019/2/27 0027 0001]
  * @see [相关类/方法]
  * @since [产品/模块版本]
  */
-@TableName("tab_sys_role_menu")
-public class SysRoleMenu extends BaseEntity<SysRoleMenu> {
+@TableName("tab_sys_role_permission")
+public class SysRolePermission extends BaseEntity<SysRolePermission> {
 
 	/**
 	 * 主键id
@@ -32,10 +32,10 @@ public class SysRoleMenu extends BaseEntity<SysRoleMenu> {
 	private String roleId;
 
 	/**
-	 * 菜单ID
+	 * 权限 ID
 	 */
-	@TableField("menu_id")
-	private String menuId;
+	@TableField("permission_id")
+	private String permissionId;
 
 	public String getId() {
 		return id;
@@ -53,18 +53,18 @@ public class SysRoleMenu extends BaseEntity<SysRoleMenu> {
 		this.roleId = roleId;
 	}
 
-	public String getMenuId() {
-		return menuId;
+	public String getPermissionId() {
+		return permissionId;
 	}
 
-	public void setMenuId(String menuId) {
-		this.menuId = menuId;
+	public void setPermissionId(String permissionId) {
+		this.permissionId = permissionId;
 	}
 
 	@Override
 	public String toString() {
-		return "SysRoleMenu{" + "id='" + id + '\'' + ", roleId='" + roleId + '\'' + ", menuId='" + menuId + '\'' + "} "
-				+ super.toString();
+		return "SysRolePermission{" + "id='" + id + '\'' + ", roleId='" + roleId + '\'' + ", permissionId='"
+				+ permissionId + '\'' + "} " + super.toString();
 	}
 
 	@Override

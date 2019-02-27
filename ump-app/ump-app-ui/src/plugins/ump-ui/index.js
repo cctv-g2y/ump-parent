@@ -29,6 +29,9 @@ import {
     UmpContainer
 } from '../../components'
 
+//自定义的权限插件
+import PermissionPlugin from './permission'
+
 /**
  * UMP插件
  * @param Vue
@@ -62,5 +65,8 @@ export default {
         Vue.component('UmpMenuSub', UmpMenuSub)
         Vue.component('UmpMenuItem', UmpMenuItem)
         Vue.component('UmpContainer', UmpContainer)
+
+        //使用权限插件
+        Vue.use(PermissionPlugin)
     }
 }

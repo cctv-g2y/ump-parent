@@ -7,7 +7,6 @@ import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * 系统菜单实体类
@@ -44,10 +43,10 @@ public class SysMenu extends BaseEntity<SysMenu> {
 	private String url;
 
 	/**
-	 * 授权(多个用逗号分隔，如：user:list,user:create)
+	 * 菜单对应的权限信息
 	 */
-	@TableField("perms")
-	private String perms;
+	@TableField("permission_id")
+	private String permissionId;
 
 	/**
 	 * 类型 0：目录 1：菜单 2：按钮
@@ -66,24 +65,6 @@ public class SysMenu extends BaseEntity<SysMenu> {
 	 */
 	@TableField("order_num")
 	private Integer orderNum;
-
-	/**
-	 * ztree属性
-	 */
-	@TableField(exist = false)
-	private Boolean open;
-
-	/**
-	 * ztree集合
-	 */
-	@TableField(exist = false)
-	private List<?> list;
-
-	/**
-	 * 父级菜单名称
-	 */
-	@TableField(exist = false)
-	private String parentName;
 
 	public String getMenuId() {
 		return menuId;
@@ -117,14 +98,6 @@ public class SysMenu extends BaseEntity<SysMenu> {
 		this.url = url;
 	}
 
-	public String getPerms() {
-		return perms;
-	}
-
-	public void setPerms(String perms) {
-		this.perms = perms;
-	}
-
 	public Integer getType() {
 		return type;
 	}
@@ -149,36 +122,19 @@ public class SysMenu extends BaseEntity<SysMenu> {
 		this.orderNum = orderNum;
 	}
 
-	public Boolean getOpen() {
-		return open;
+	public String getPermissionId() {
+		return permissionId;
 	}
 
-	public void setOpen(Boolean open) {
-		this.open = open;
-	}
-
-	public List<?> getList() {
-		return list;
-	}
-
-	public void setList(List<?> list) {
-		this.list = list;
-	}
-
-	public String getParentName() {
-		return parentName;
-	}
-
-	public void setParentName(String parentName) {
-		this.parentName = parentName;
+	public void setPermissionId(String permissionId) {
+		this.permissionId = permissionId;
 	}
 
 	@Override
 	public String toString() {
 		return "SysMenu{" + "menuId='" + menuId + '\'' + ", parentId='" + parentId + '\'' + ", menuName='" + menuName
-				+ '\'' + ", url='" + url + '\'' + ", perms='" + perms + '\'' + ", type=" + type + ", icon='" + icon
-				+ '\'' + ", orderNum=" + orderNum + ", open=" + open + ", list=" + list + ", parentName='" + parentName
-				+ '\'' + "} " + super.toString();
+				+ '\'' + ", url='" + url + '\'' + ", permissionId='" + permissionId + '\'' + ", type=" + type
+				+ ", icon='" + icon + '\'' + ", orderNum=" + orderNum + "} " + super.toString();
 	}
 
 	@Override
