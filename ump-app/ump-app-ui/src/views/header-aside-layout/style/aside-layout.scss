@@ -114,6 +114,21 @@
       margin-top: 4px;
     }
   }
+
+  .header-user {
+    height: 60px;
+    align-items: center;
+
+    &.el-dropdown {
+      @extend %unable-select;
+    }
+
+    .btn-text {
+      padding: 14px 12px;
+      border-radius: 4px;
+      margin: 0px !important;
+    }
+  }
 }
 
 //header 样式设置 结束------------------------------
