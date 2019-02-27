@@ -67,6 +67,6 @@ export default {
         Vue.component('UmpContainer', UmpContainer)
 
         //使用权限插件
-        Vue.use(PermissionPlugin)
+        //Vue.use(PermissionPlugin)
     }
 }

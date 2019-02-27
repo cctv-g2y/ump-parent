@@ -100,33 +100,47 @@
     }
   }
 
-  .header-fullscreen {
-    @extend %unable-select;
-    float: left;
+  //头部右侧
+  .layout-header__right {
+    float: right;
     height: 60px;
-    width: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    i {
-      font-size: 20px;
-      margin-top: 4px;
-    }
-  }
-
-  .header-user {
-    height: 60px;
-    align-items: center;
-
-    &.el-dropdown {
+    .header-fullscreen {
       @extend %unable-select;
+      float: left;
+      height: 60px;
+      width: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      i {
+        font-size: 20px;
+        margin-top: 4px;
+      }
+
     }
 
-    .btn-text {
-      padding: 14px 12px;
-      border-radius: 4px;
-      margin: 0px !important;
+    .header-user {
+      float: left;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #9db1c5;
+
+      &.el-dropdown {
+        @extend %unable-select;
+      }
+
+      .btn-text {
+        padding: 14px 12px;
+        border-radius: 4px;
+        margin: 0px !important;
+      }
     }
   }
 }

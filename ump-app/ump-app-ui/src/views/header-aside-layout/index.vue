@@ -7,8 +7,10 @@
                 <header-logo flex-box="0"/>
                 <header-aside-btn flex-box="0"/>
                 <header-menu flex-box="1"/>
-                <header-fullscreen flex-box="0"/>
-                <header-user flex-box="0"/>
+                <section flex-box="0" class="layout-header__right" flex>
+                    <header-fullscreen flex-box="0"/>
+                    <header-user flex-box="0"/>
+                </section>
             </ump-header>
             <ump-aside :width="asideWidth" slot="side" flex-box="0"
                        class="layout-aside"
