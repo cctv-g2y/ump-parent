@@ -3,11 +3,12 @@
         <el-menu
                 :collapse="asideCollapse"
                 :unique-opened="true"
+                :default-active="activeIndex"
                 ref="menu"
                 @select="handleMenuSelect">
-            <template v-for="(menu, menuIndex) in menus">
+            <template v-for="(menu, menuIndex) in aside">
                 <ump-menu-item v-if="menu.children === undefined" :menu="menu"
-                              :key="menuIndex"/>
+                               :key="menuIndex"/>
                 <ump-menu-sub v-else :menu="menu" :key="menuIndex"/>
             </template>
         </el-menu>
@@ -15,7 +16,7 @@
 </template>
 
 <script>
-    import {mapState, mapActions} from 'vuex'
+    import {mapState} from 'vuex'
     import BScroll from 'better-scroll'
 
     export default {
@@ -23,6 +24,10 @@
         computed: {
             ...mapState('portal/common', {
                 asideCollapse: state => state.asideCollapse
+            }),
+            ...mapState('portal/menu', {
+                aside: state => state.aside,
+                activeIndex: state => state.sideActive,
             }),
             width: function () {
                 return this.asideCollapse ? "65px" : "200px";
@@ -77,125 +82,7 @@
         data() {
             return {
                 selection: null,
-                BS: null,
-                menus: [
-                    {
-                        path: '/index',
-                        title: '首页',
-                        icon: 'home'
-                    },
-                    {
-                        path: '/test',
-                        title: '测试',
-                        icon: 'home'
-                    },
-                    {
-                        path: '/table',
-                        title: '表格',
-                        icon: 'puzzle-piece',
-                        children: [
-                            {
-                                path: '/table/baseTable',
-                                title: '基础表格',
-                                icon: 'github'
-                            },
-                            {
-                                path: '/table/stripeTable',
-                                title: '斑马纹表格',
-                                icon: 'globe'
-                            },
-                            {
-                                path: '/table/sortTable',
-                                title: '排序表格',
-                                icon: 'globe'
-                            }
-                        ]
-                    },
-                    {
-                        title: '功能1',
-                        icon: 'puzzle-piece',
-                        children: [
-                            {
-                                title: '新窗口打开链接1',
-                                icon: 'link',
-                                children: [
-                                    {
-                                        path: 'https://github.com/d2-projects/d2-admin',
-                                        title: 'D2Admin Github',
-                                        icon: 'github'
-                                    },
-                                    {
-                                        path: 'https://juejin.im/user/57a48b632e958a006691b946/posts',
-                                        title: '掘金',
-                                        icon: 'globe'
-                                    },
-                                    {
-                                        path: 'https://my.oschina.net/u/3871516',
-                                        title: '开源中国',
-                                        icon: 'globe'
-                                    },
-                                    {
-                                        path: 'https://www.zhihu.com/people/fairy-ever/activities',
-                                        title: '知乎',
-                                        icon: 'globe'
-                                    },
-                                    {
-                                        path: 'https://segmentfault.com/blog/liyang-note-book',
-                                        title: 'segmentfault 专栏',
-                                        icon: 'globe'
-                                    },
-                                    {
-                                        path: 'http://www.fairyever.com/',
-                                        title: 'www.fairyever.com',
-                                        icon: 'globe'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                    , {
-                        title: '功能2',
-                        icon: 'puzzle-piece',
-                        children: [
-                            {
-                                title: '新窗口打开链接3',
-                                icon: 'link',
-                                children: [
-                                    {
-                                        path: 'https://github.com/d2-projects/d2-admin',
-                                        title: 'D2Admin Github',
-                                        icon: 'github'
-                                    },
-                                    {
-                                        path: 'https://juejin.im/user/57a48b632e958a006691b946/posts',
-                                        title: '掘金',
-                                        icon: 'globe'
-                                    },
-                                    {
-                                        path: 'https://my.oschina.net/u/3871516',
-                                        title: '开源中国',
-                                        icon: 'globe'
-                                    },
-                                    {
-                                        path: 'https://www.zhihu.com/people/fairy-ever/activities',
-                                        title: '知乎',
-                                        icon: 'globe'
-                                    },
-                                    {
-                                        path: 'https://segmentfault.com/blog/liyang-note-book',
-                                        title: 'segmentfault 专栏',
-                                        icon: 'globe'
-                                    },
-                                    {
-                                        path: 'http://www.fairyever.com/',
-                                        title: 'www.fairyever.com',
-                                        icon: 'globe'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
+                BS: null
             };
         },
     }

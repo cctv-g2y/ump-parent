@@ -37,6 +37,8 @@ export default {
                     cookies.set('token', resData.token)
                     commit('setUser', resData.data)
                     console.log('res: ', resData)
+                    //初始化用户菜单信息
+                    await dispatch('portal/menu/initMenus', {userId: resData.uuid}, {root: true})
                     resolve()
                 }).catch(error => {
                     reject(error)
