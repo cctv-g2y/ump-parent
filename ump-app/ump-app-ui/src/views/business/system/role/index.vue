@@ -6,7 +6,8 @@
 
 <script>
     export default {
-        name: "SysRole"
+        name: "SysRole",
+
     }
 </script>
 
