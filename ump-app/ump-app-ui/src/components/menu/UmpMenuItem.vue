@@ -1,8 +1,8 @@
 <template>
     <el-menu-item :index=" menu.path || uniqueId()">
-        <i>
-            <font-awesome-icon :icon="['fas','bars']"
-                               size="lg"></font-awesome-icon>
+        <i v-if="menu.icon">
+            <font-awesome-icon :icon="[`${menu.iconPrefix||'fas'}`,`${menu.icon}`]"
+                    size="lg"></font-awesome-icon>
         </i>
         <span slot="title">{{menu.title || '未命名菜单'}}</span>
     </el-menu-item>

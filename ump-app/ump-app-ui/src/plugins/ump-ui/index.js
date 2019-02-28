@@ -6,13 +6,13 @@ import 'vx-easyui/dist/themes/icon.css'
 import 'vx-easyui/dist/themes/vue.css'
 import EasyUI from 'vx-easyui'
 
-//fontawesome 组件
 import fontawesome from '@fortawesome/fontawesome'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
-import solid from '@fortawesome/fontawesome-free-solid'
-import regular from '@fortawesome/fontawesome-free-regular'
-import brands from '@fortawesome/fontawesome-free-brands'
-
+import fas from '@fortawesome/fontawesome-free-solid'
+import far from '@fortawesome/fontawesome-free-regular'
+import fab from '@fortawesome/fontawesome-free-brands'
+//添加fontawesome
+fontawesome.library.add(fas, far, fab)
 //Element
 import Element from 'element-ui'
 import '../element-ui/element-variables.scss'
@@ -47,10 +47,7 @@ export default {
         Vue.prototype.$baseUrl = process.env.BASE_URL
         //使用easyui
         Vue.use(EasyUI)
-        //添加fontawesome
-        fontawesome.library.add(solid)
-        fontawesome.library.add(regular)
-        fontawesome.library.add(brands)
+
         Vue.component('font-awesome-icon', FontAwesomeIcon)
 
         // Element

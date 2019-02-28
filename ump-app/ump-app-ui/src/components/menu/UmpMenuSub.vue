@@ -1,9 +1,10 @@
 <template>
     <el-submenu :index="menu.path || uniqueId()">
         <template slot="title">
-            <i>
-                <font-awesome-icon :icon="['fas','bars']"
-                                   size="lg"></font-awesome-icon>
+            <i v-if="menu.icon">
+                <font-awesome-icon
+                        :icon="[`${menu.iconPrefix||'fas'}`,`${menu.icon}`]"
+                        size="lg"></font-awesome-icon>
             </i>
             <span slot="title">{{menu.title}}</span>
         </template>

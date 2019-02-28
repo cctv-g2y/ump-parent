@@ -12,31 +12,37 @@ const userMenus = [
     {
         path: '/index',
         title: '首页',
+        iconPrefix: 'fas',
         icon: 'home'
     },
     {
         path: '/test',
         title: '测试',
+        iconPrefix: 'fas',
         icon: 'home'
     },
     {
         path: '/table',
         title: '表格',
+        iconPrefix: 'fas',
         icon: 'puzzle-piece',
         children: [
             {
                 path: '/table/baseTable',
                 title: '基础表格',
+                iconPrefix: 'fab',
                 icon: 'github'
             },
             {
                 path: '/table/stripeTable',
                 title: '斑马纹表格',
+                iconPrefix: 'fas',
                 icon: 'globe'
             },
             {
                 path: '/table/sortTable',
                 title: '排序表格',
+                iconPrefix: 'fas',
                 icon: 'globe'
             }
         ]
@@ -44,39 +50,47 @@ const userMenus = [
     {
         title: '功能1',
         icon: 'puzzle-piece',
+        iconPrefix: 'fas',
         children: [
             {
                 title: '新窗口打开链接1',
+                iconPrefix: 'fas',
                 icon: 'link',
                 children: [
                     {
                         path: 'https://github.com/d2-projects/d2-admin',
                         title: 'D2Admin Github',
+                        iconPrefix: 'fab',
                         icon: 'github'
                     },
                     {
                         path: 'https://juejin.im/user/57a48b632e958a006691b946/posts',
                         title: '掘金',
+                        iconPrefix: 'fas',
                         icon: 'globe'
                     },
                     {
                         path: 'https://my.oschina.net/u/3871516',
                         title: '开源中国',
+                        iconPrefix: 'fas',
                         icon: 'globe'
                     },
                     {
                         path: 'https://www.zhihu.com/people/fairy-ever/activities',
                         title: '知乎',
+                        iconPrefix: 'fas',
                         icon: 'globe'
                     },
                     {
                         path: 'https://segmentfault.com/blog/liyang-note-book',
                         title: 'segmentfault 专栏',
+                        iconPrefix: 'fas',
                         icon: 'globe'
                     },
                     {
                         path: 'http://www.fairyever.com/',
                         title: 'www.fairyever.com',
+                        iconPrefix: 'fas',
                         icon: 'globe'
                     }
                 ]
@@ -86,39 +100,47 @@ const userMenus = [
     , {
         title: '功能2',
         icon: 'puzzle-piece',
+        iconPrefix: 'fas',
         children: [
             {
                 title: '新窗口打开链接3',
                 icon: 'link',
+                iconPrefix: 'fas',
                 children: [
                     {
                         path: 'https://github.com/d2-projects/d2-admin',
                         title: 'D2Admin Github',
+                        iconPrefix: 'fab',
                         icon: 'github'
                     },
                     {
                         path: 'https://juejin.im/user/57a48b632e958a006691b946/posts',
                         title: '掘金',
+                        iconPrefix: 'fas',
                         icon: 'globe'
                     },
                     {
                         path: 'https://my.oschina.net/u/3871516',
                         title: '开源中国',
+                        iconPrefix: 'fas',
                         icon: 'globe'
                     },
                     {
                         path: 'https://www.zhihu.com/people/fairy-ever/activities',
                         title: '知乎',
+                        iconPrefix: 'fas',
                         icon: 'globe'
                     },
                     {
                         path: 'https://segmentfault.com/blog/liyang-note-book',
                         title: 'segmentfault 专栏',
+                        iconPrefix: 'fas',
                         icon: 'globe'
                     },
                     {
                         path: 'http://www.fairyever.com/',
                         title: 'www.fairyever.com',
+                        iconPrefix: 'fas',
                         icon: 'globe'
                     }
                 ]
@@ -157,7 +179,7 @@ export default [
         handle({body}) {
             return {
                 retCode: '000000',
-                retDesc: '菜单查询成功',
+                retDesc: '成功',
                 data: userMenus
             }
 
