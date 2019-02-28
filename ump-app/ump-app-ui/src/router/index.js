@@ -53,6 +53,7 @@ router.beforeEach((to, from, next) => {
 router.afterEach(to => {
     // 进度条
     NProgress.done()
+    //设置当前激活路径
     store.dispatch('portal/page/open', {
         name: to.name,
         params: to.params,

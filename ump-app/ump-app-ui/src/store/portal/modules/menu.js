@@ -39,7 +39,7 @@ export default {
          */
         refreshActive({commit}, {index}) {
             return new Promise(async resolve => {
-                commit('setHeaderActive', index)
+                commit('setSideActive', index)
                 resolve()
             });
         }

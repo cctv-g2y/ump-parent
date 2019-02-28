@@ -3,6 +3,7 @@
         <el-menu
                 :collapse="asideCollapse"
                 :unique-opened="true"
+                active-text-color="#ffffff"
                 :default-active="activeIndex"
                 ref="menu"
                 @select="handleMenuSelect">
@@ -43,6 +44,7 @@
         },
         methods: {
             handleMenuSelect(index) {
+                console.log('打开页面-------' + index)
                 if (/^d2-menu-empty-\d+$/.test(index) || index === undefined) {
                     this.$message.warning('临时菜单')
                 } else if (/^https:\/\/|http:\/\//.test(index)) {

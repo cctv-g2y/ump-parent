@@ -61,6 +61,8 @@ export default {
          */
         open({state, commit, dispatch}, {name, params, query, fullPath}) {
             return new Promise(async resolve => {
+                //刷新菜单的激活页
+                await dispatch('portal/menu/refreshActive', {index: fullPath}, {root: true})
                 console.log('name:' + name + ',params:' + params + ',query:' + query + ',fullPath:' + fullPath)
                 // 已经打开的页面
                 let opened = state.opened

@@ -1,38 +1,42 @@
-import Layout from '../views/header-aside-layout'
-import UserLogin from '../views/business/login'
+import {Comm} from './routerMap'
 
+const files = require.context('./modules', false, /\.js$/)
+
+const modules = []
+files.keys().forEach(key => {
+    //添加模块
+    modules.push(files(key).default)
+})
 /**
  * 联和路由列表信息
  * @type {*[]}
  */
-export const associateRoutes = [
-    {
-        path: '/',
-        name: 'home',
-        redirect: {name: 'index'},
-        component: Layout,
-        children: [
-            {
-                path: 'index',
-                name: 'index',
-                meta: {
-                    title: '首页',
-                    auth: true
-                },
-                component: () => import(/* webpackChunkName: "about" */ '../views/Test.vue')
+export const associateRoutes = [...[{
+    path: '/',
+    name: 'home',
+    redirect: {name: 'index'},
+    component: Comm.Layout,
+    children: [
+        {
+            path: 'index',
+            name: 'index',
+            meta: {
+                title: '首页',
+                auth: true
             },
-            {
-                path: '/about',
-                name: 'about',
-                meta: {
-                    title: '测试',
-                    auth: true
-                },
-                component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-            }
-        ]
-    },
-]
+            component: () => import(/* webpackChunkName: "about" */ '../views/Test.vue')
+        },
+        {
+            path: '/about',
+            name: 'about',
+            meta: {
+                title: '测试',
+                auth: true
+            },
+            component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+        }
+    ]
+}], ...modules]
 
 /**
  * 独立路由信息
@@ -42,7 +46,7 @@ const independentRoutes = [
     {
         path: '/login',
         name: 'login',
-        component: UserLogin
+        component: Comm.Login
     }
 ]
 

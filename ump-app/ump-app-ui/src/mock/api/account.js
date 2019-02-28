@@ -13,13 +13,45 @@ const userMenus = [
         path: '/index',
         title: '首页',
         iconPrefix: 'fas',
-        icon: 'home'
+        icon: 'th-large'
     },
     {
-        path: '/test',
-        title: '测试',
+        path: '/sys',
+        title: '系统管理',
         iconPrefix: 'fas',
-        icon: 'home'
+        icon: 'home',
+        children: [
+            {
+                path: '/sys/user',
+                title: '用户管理',
+                iconPrefix: 'fas',
+                icon: 'users-cog'
+            },
+            {
+                path: '/sys/menu',
+                title: '菜单管理',
+                iconPrefix: 'fas',
+                icon: 'list-ul'
+            },
+            {
+                path: '/sys/role',
+                title: '角色管理',
+                iconPrefix: 'fas',
+                icon: 'sitemap'
+            },
+            {
+                path: '/sys/perm',
+                title: '权限管理',
+                iconPrefix: 'fas',
+                icon: 'eye-slash'
+            },
+            {
+                path: '/sys/dict',
+                title: '字典管理',
+                iconPrefix: 'fas',
+                icon: 'database'
+            }
+        ]
     },
     {
         path: '/table',
@@ -56,56 +88,6 @@ const userMenus = [
                 title: '新窗口打开链接1',
                 iconPrefix: 'fas',
                 icon: 'link',
-                children: [
-                    {
-                        path: 'https://github.com/d2-projects/d2-admin',
-                        title: 'D2Admin Github',
-                        iconPrefix: 'fab',
-                        icon: 'github'
-                    },
-                    {
-                        path: 'https://juejin.im/user/57a48b632e958a006691b946/posts',
-                        title: '掘金',
-                        iconPrefix: 'fas',
-                        icon: 'globe'
-                    },
-                    {
-                        path: 'https://my.oschina.net/u/3871516',
-                        title: '开源中国',
-                        iconPrefix: 'fas',
-                        icon: 'globe'
-                    },
-                    {
-                        path: 'https://www.zhihu.com/people/fairy-ever/activities',
-                        title: '知乎',
-                        iconPrefix: 'fas',
-                        icon: 'globe'
-                    },
-                    {
-                        path: 'https://segmentfault.com/blog/liyang-note-book',
-                        title: 'segmentfault 专栏',
-                        iconPrefix: 'fas',
-                        icon: 'globe'
-                    },
-                    {
-                        path: 'http://www.fairyever.com/',
-                        title: 'www.fairyever.com',
-                        iconPrefix: 'fas',
-                        icon: 'globe'
-                    }
-                ]
-            }
-        ]
-    }
-    , {
-        title: '功能2',
-        icon: 'puzzle-piece',
-        iconPrefix: 'fas',
-        children: [
-            {
-                title: '新窗口打开链接3',
-                icon: 'link',
-                iconPrefix: 'fas',
                 children: [
                     {
                         path: 'https://github.com/d2-projects/d2-admin',

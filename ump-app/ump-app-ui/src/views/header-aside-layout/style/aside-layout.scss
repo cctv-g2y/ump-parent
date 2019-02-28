@@ -163,8 +163,8 @@
 %menu-hover-focus {
   color: #fff;
   background-color: inherit;
-  background-color: #48a75b !important;
-  //background-color: #409EFF !important;
+  //background-color: #48a75b !important;
+  background-color: #409EFF !important;
   text-shadow: none;
 }
 
@@ -199,6 +199,12 @@
       background-color: transparent;
       color: #9db1c5;
       border-right: none;
+
+      //菜单选中样式
+      & .el-menu-item.is-active {
+        background-color: #374b5e;
+        color: #ffffff;
+      }
 
       & .el-submenu__icon-arrow {
         color: #fff;
