@@ -3,8 +3,8 @@
  * @type {{Layout: (function(): (Promise<*>|*)), Login: (function(): (Promise<*>|*))}}
  */
 export const Comm = {
-    "Layout": () => import(/* webpackChunkName: "layout" */'@/views/header-aside-layout'),
-    "Login": () => import(/* webpackChunkName: "login" */'@/views/business/login')
+    "Layout": () => import(/* webpackChunkName: "comm" */'@/views/header-aside-layout'),
+    "Login": () => import(/* webpackChunkName: "comm" */'@/views/business/login')
 }
 
 

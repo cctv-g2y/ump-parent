@@ -17,7 +17,7 @@ process.env.VUE_APP_BUILD_MODE = 'mock'
 
 
 module.exports = {
-    baseUrl: BASE_URL,
+    publicPath: BASE_URL,
     lintOnSave: true,
     devServer: {
         publicPath: BASE_URL
