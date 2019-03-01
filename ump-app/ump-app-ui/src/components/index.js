@@ -6,6 +6,7 @@ import UmpMain from './main/UmpMain'
 import UmpMenuSub from './menu/UmpMenuSub'
 import UmpMenuItem from './menu/UmpMenuItem'
 import UmpContainer from './container'
+import UmpTreeTable from './treetable'
 
 export {
     UmpFooter,
@@ -15,6 +16,7 @@ export {
     UmpMain,
     UmpMenuSub,
     UmpMenuItem,
-    UmpContainer
+    UmpContainer,
+    UmpTreeTable
 }
 
