@@ -24,51 +24,21 @@
             </el-form-item>
         </el-form>
         <section>
-            <el-table :data="tableData"
-                      size="small"
-                      stripe
-                      highlight-current-row
-                      border
-                      style="width: 100%;"
-                      @selection-change="handleSelectionChange"
-                      @sort-change="handleSortChange">
-                <el-table-column type="selection" width="55"></el-table-column>
-                <el-table-column label="权限ID" prop="id" sortable="custom">
-                    <template slot-scope="scope">
-                        {{scope.row.id}}
-                    </template>
-                </el-table-column>
-                <el-table-column label="权限类型" prop="type">
-                    <template slot-scope="scope">
-                        {{scope.row.type}}
-                    </template>
-                </el-table-column>
-                <el-table-column fixed="right" label="操作" align="center">
-                    <template slot-scope="scope">
-                        <el-button
-                                type="primary"
-                                title="编辑"
-                                size="mini"
-                                icon="el-icon-edit"
-                                circle
-                                @click="openEditForm(scope.row)"
-                        />
-                        <el-button
-                                type="danger"
-                                title="删除"
-                                size="mini"
-                                icon="el-icon-delete"
-                                circle
-                                @click="del(scope.row.id)"
-                        />
-                    </template>
-                </el-table-column>
-            </el-table>
+            <d2-crud ref="permTable" :columns="permTable.columns"
+                     :loading="permTable.loading"
+                     :loading-options="permTable.loadingOptions"
+                     :data="permTable.data" :options="permTable.options"
+                     selection-row>
+                <el-button slot="header" style="margin-bottom: 5px">自定义按钮1
+                </el-button>
+                <el-button slot="header" style="margin-bottom: 5px">自定义按钮2
+                </el-button>
+            </d2-crud>
         </section>
         <el-pagination slot="footer"
-                       :current-page="page.current"
-                       :page-size="page.size"
-                       :total="page.total"
+                       :current-page="permTable.pagination.currentPage"
+                       :page-size="permTable.pagination.pageSize"
+                       :total="permTable.pagination.total"
                        :page-sizes="[1,100, 200, 300, 400]"
                        layout="total, sizes, prev, pager, next, jumper"
                        style="margin: -10px;"
@@ -80,11 +50,36 @@
 </template>
 
 <script>
+    import * as permService from '@api/sysPerm'
+
     export default {
         name: "SysPerm",
+        mounted() {
+            this.getTableData();
+        },
         methods: {
+            //查询表格数据
+            getTableData() {
+                this.permTable.loading = true
+                let query = {
+                    pageIndex: this.permTable.pagination.current,
+                    pageSize: this.permTable.pagination.pageSize,
+                    filter: this.searchForm
+                };
+                //通过api远程获取数据
+                permService.pagePerm(query).then(res => {
+                    let resData = res.data.data
+                    this.permTable.data = resData.rows;
+                    this.permTable.pagination.total = resData.total;
+                }).catch(error => {
+
+                })
+                console.log('------------------------- 加载完毕')
+                this.permTable.loading = false
+            },
             handleSearchFormSubmit() {
                 console.log('-------------------------')
+                this.getTableData();
             },
             handleSearchFormReset() {
                 this.$refs.searchForm.resetFields()
@@ -112,88 +107,35 @@
                     name: "",
                     email: ""
                 },
-                page: {
-                    current: 1,
-                    size: 100,
-                    total: 0
-                },
-                tableData: [{
-                    id: '2016-05-03',
-                    type: '王小虎'
 
-                }, {
-                    id: '2016-05-02',
-                    type: '王小虎'
-
-                }, {
-                    id: '2016-05-04',
-                    type: '王小虎'
-
-                }, {
-                    id: '2016-05-01',
-                    type: '王小虎'
-                }, {
-                    id: '2016-05-08',
-                    type: '王小虎'
-
-                }, {
-                    id: '2016-05-06',
-                    type: '王小虎',
-                }, {
-                    id: '2016-05-07',
-                    type: '王小虎'
-                }, {
-                    id: '2016-05-04',
-                    type: '王小虎'
-
-                }, {
-                    id: '2016-05-01',
-                    type: '王小虎'
-                }, {
-                    id: '2016-05-08',
-                    type: '王小虎'
-
-                }, {
-                    id: '2016-05-06',
-                    type: '王小虎',
-                }, {
-                    id: '2016-05-07',
-                    type: '王小虎'
-                }, {
-                    id: '2016-05-04',
-                    type: '王小虎'
-
-                }, {
-                    id: '2016-05-01',
-                    type: '王小虎'
-                }, {
-                    id: '2016-05-08',
-                    type: '王小虎'
-
-                }, {
-                    id: '2016-05-06',
-                    type: '王小虎',
-                }, {
-                    id: '2016-05-07',
-                    type: '王小虎'
-                }, {
-                    id: '2016-05-04',
-                    type: '王小虎'
-
-                }, {
-                    id: '2016-05-01',
-                    type: '王小虎'
-                }, {
-                    id: '2016-05-08',
-                    type: '王小虎'
-
-                }, {
-                    id: '2016-05-06',
-                    type: '王小虎',
-                }, {
-                    id: '2016-05-07',
-                    type: '王小虎'
-                }]
+                permTable: {
+                    columns: [
+                        {
+                            title: '权限ID',
+                            key: 'id',
+                            width: '180'
+                        },
+                        {
+                            title: '权限类型',
+                            key: 'type',
+                        }
+                    ],
+                    pagination: {
+                        currentPage: 1,
+                        pageSize: 20,
+                        total: 0
+                    },
+                    options: {
+                        stripe: true,
+                        border: true
+                    },
+                    loading: false,
+                    loadingOptions: {
+                        text: '拼命加载中',
+                        spinner: 'el-icon-loading',
+                    },
+                    data: []
+                }
             };
         },
 

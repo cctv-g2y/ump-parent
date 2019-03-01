@@ -16,6 +16,7 @@ fontawesome.library.add(fas, far, fab)
 //Element
 import Element from 'element-ui'
 import '../element-ui/element-variables.scss'
+import D2Crud from '@d2-projects/d2-crud'
 
 //自定义组件
 import {
@@ -52,6 +53,8 @@ export default {
 
         // Element
         Vue.use(Element)
+        //表格组件
+        Vue.use(D2Crud)
 
         //使用自定义全局组件
         Vue.component('UmpFooter', UmpFooter)
