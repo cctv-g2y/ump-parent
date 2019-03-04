@@ -1,10 +1,13 @@
 <template>
     <ump-container type="full">
         <section>
-            <ump-tree-table ref="meunTable" :columns="meunTable.columns" :data="meunTable.data" border stripe>
-                <el-table-column fixed="right" label="操作" width="100" ref="operation">
+            <ump-tree-table ref="meunTable" :columns="meunTable.columns"
+                            :data="meunTable.data" border stripe>
+                <el-table-column fixed="right" label="操作" width="100"
+                                 ref="operation">
                     <template slot-scope="scope">
-                        <el-button @click="handleClick(scope.row)" type="text" size="small">查看
+                        <el-button @click="handleClick(scope.row)" type="text"
+                                   size="small">查看
                         </el-button>
                         <el-button type="text" size="small">编辑</el-button>
                     </template>
@@ -15,9 +18,25 @@
 </template>
 
 <script>
+    import * as menuService from '@api/sysMenu'
     export default {
         name: "SysMenu",
+        mounted() {
+            this.getTableData();
+        },
         methods: {
+            //查询表格数据
+            getTableData() {
+                let query = {};
+                //通过api远程获取数据
+                menuService.findAllMenu(query).then(res => {
+                    let resData = res.data.data
+                    this.meunTable.data = resData;
+                }).catch(error => {
+
+                })
+                console.log('------------------------- 加载完毕')
+            },
             handleClick(row) {
                 console.log(row);
             }
@@ -41,57 +60,7 @@
                             key: 'path'
                         }
                     ],
-                    data: [
-                        {
-                            id: '0',
-                            name: '系统管理',
-                            path: '/sys',
-                            children: [
-                                {
-                                    id: '0.1',
-                                    name: '用户管理',
-                                    path: '/sys/user',
-                                    children: [
-                                        {
-                                            id: '0.1.1',
-                                            name: '增加用户',
-                                            path: '/sys/user',
-                                        },
-                                        {
-                                            id: '0.1.2',
-                                            name: '编辑用户',
-                                            path: '/sys/user',
-                                        }
-                                    ]
-                                },
-                                {
-                                    id: '0.2',
-                                    name: '菜单管理',
-                                    path: '/sys/menu',
-                                },
-                                {
-                                    id: '0.3',
-                                    name: '权限管理',
-                                    path: '/sys/perm',
-                                },
-                                {
-                                    id: '0.4',
-                                    name: '角色管理',
-                                    path: '/sys/role',
-                                },
-                                {
-                                    id: '0.5',
-                                    name: '字典管理',
-                                    path: '/sys/dict',
-                                }
-                            ]
-                        },
-                        {
-                            id: '1',
-                            name: '首页',
-                            path: '/index',
-                        }
-                    ]
+                    data: []
                 }
             }
         }
