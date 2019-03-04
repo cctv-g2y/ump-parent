@@ -29,10 +29,6 @@
             </template>
         </el-table-column>
         <slot/>
-        <el-table-column v-if="$slots.operation" fixed="right" label="操作"
-                         width="100" ref="operation">
-            <slot name="operation"></slot>
-        </el-table-column>
     </el-table>
 </template>
 

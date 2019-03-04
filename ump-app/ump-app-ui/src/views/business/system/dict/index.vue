@@ -2,9 +2,9 @@
     <ump-container type="full">
         <section>
             <ump-tree-table ref="dictTable" :columns="dictTable.columns"
-                            :data="dictTable.data" border stripe>
-                <el-table-column fixed="right" label="操作" width="100"
-                                 ref="operation">
+                            :data="dictTable.data" border stripe
+                            v-loading="dictTable.loading">
+                <el-table-column fixed="right" label="操作" width="100" ref="operation">
                     <template slot-scope="scope">
                         <el-button @click="handleClick(scope.row)" type="text"
                                    size="small">查看
@@ -28,6 +28,7 @@
         methods: {
             //查询表格数据
             getTableData() {
+                this.dictTable.loading = true
                 let query = {};
                 //通过api远程获取数据
                 dictService.findAllDict(query).then(res => {
@@ -36,7 +37,7 @@
                 }).catch(error => {
 
                 })
-                console.log('------------------------- 加载完毕')
+                this.dictTable.loading = false
             },
             handleClick(row) {
                 console.log(row);
@@ -71,6 +72,7 @@
                             key: 'remark'
                         }
                     ],
+                    loading: true,
                     data: []
                 }
             }

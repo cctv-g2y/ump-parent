@@ -24,7 +24,7 @@ export const associateRoutes = [...[{
                 title: '首页',
                 auth: true
             },
-            component: () => import(/* webpackChunkName: "about" */ '../views/Test.vue')
+            component:Comm.Index
         },
         {
             path: '/about',
@@ -33,7 +33,7 @@ export const associateRoutes = [...[{
                 title: '测试',
                 auth: true
             },
-            component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+            component:Comm.Index
         }
     ]
 }], ...modules]

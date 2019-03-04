@@ -61,11 +61,9 @@
                 }).catch(error => {
 
                 })
-                console.log('------------------------- 加载完毕')
                 this.userTable.loading = false
             },
             handleSearchFormSubmit() {
-                console.log('-------------------------')
                 this.getTableData();
             },
             handleSearchFormReset() {

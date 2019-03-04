@@ -4,7 +4,8 @@
  */
 export const Comm = {
     "Layout": () => import(/* webpackChunkName: "comm" */'@/views/header-aside-layout'),
-    "Login": () => import(/* webpackChunkName: "comm" */'@/views/business/login')
+    "Login": () => import(/* webpackChunkName: "comm" */'@/views/business/login'),
+    "Index": () => import(/* webpackChunkName: "comm" */'@/views/business/index')
 }
 
 

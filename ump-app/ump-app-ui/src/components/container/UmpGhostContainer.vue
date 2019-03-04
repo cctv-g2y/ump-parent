@@ -1,5 +1,5 @@
 <template>
-    <div class="ump-ghost-container">
+    <div class="ump-ghost-container" v-bind="$attrs">
         <div v-if="$slots.header" class="ump-ghost-container__header"
              ref="header">
             <slot name="header"/>

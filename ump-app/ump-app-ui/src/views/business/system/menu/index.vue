@@ -2,9 +2,9 @@
     <ump-container type="full">
         <section>
             <ump-tree-table ref="meunTable" :columns="meunTable.columns"
-                            :data="meunTable.data" border stripe>
-                <el-table-column fixed="right" label="操作" width="100"
-                                 ref="operation">
+                            :data="meunTable.data" border stripe
+                            v-loading="meunTable.loading">
+                <el-table-column fixed="right" label="操作" width="100" ref="operation">
                     <template slot-scope="scope">
                         <el-button @click="handleClick(scope.row)" type="text"
                                    size="small">查看
@@ -19,6 +19,7 @@
 
 <script>
     import * as menuService from '@api/sysMenu'
+
     export default {
         name: "SysMenu",
         mounted() {
@@ -27,6 +28,7 @@
         methods: {
             //查询表格数据
             getTableData() {
+                this.meunTable.loading = true
                 let query = {};
                 //通过api远程获取数据
                 menuService.findAllMenu(query).then(res => {
@@ -35,7 +37,7 @@
                 }).catch(error => {
 
                 })
-                console.log('------------------------- 加载完毕')
+                this.meunTable.loading = false
             },
             handleClick(row) {
                 console.log(row);
@@ -60,6 +62,7 @@
                             key: 'path'
                         }
                     ],
+                    loading: true,
                     data: []
                 }
             }
