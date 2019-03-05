@@ -28,7 +28,8 @@ import {
     UmpMenuSub,
     UmpMenuItem,
     UmpContainer,
-    UmpTreeTable
+    UmpTreeTable,
+    UmpStatus
 } from '../../components'
 
 //自定义的权限插件
@@ -67,6 +68,7 @@ export default {
         Vue.component('UmpMenuItem', UmpMenuItem)
         Vue.component('UmpContainer', UmpContainer)
         Vue.component('UmpTreeTable', UmpTreeTable)
+        Vue.component('UmpStatus', UmpStatus)
         //使用权限插件
         Vue.use(PermissionPlugin, options)
     }

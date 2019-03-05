@@ -109,13 +109,26 @@
                 roleTable: {
                     columns: [
                         {
-                            title: '权限ID',
+                            title: '角色ID',
                             key: 'id',
                             width: '180'
                         },
                         {
-                            title: '权限类型',
-                            key: 'type',
+                            title: '角色名称',
+                            key: 'name',
+                            width: '180'
+                        },
+                        {
+                            title: '状态标识',
+                            key: 'status',
+                            width: '180',
+                            component: {
+                                name: 'UmpStatus'
+                            }
+                        },
+                        {
+                            title: '描述',
+                            key: 'remark'
                         }
                     ],
                     pagination: {
